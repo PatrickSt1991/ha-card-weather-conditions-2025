@@ -7,27 +7,29 @@
 [![Language grade: JavaScript]](https://shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=flat-square)
 
 
-## Features ✨  
+## Features
 
-✅ **Summary Weather Information** &nbsp; &nbsp; 🌡️ **Detailed Current Weather Data** &nbsp; &nbsp; 📅 **Detailed Forecast Weather Data**  
-🌊 **Detailed Forecast Sea Weather Data** &nbsp; &nbsp; ☀️ **Ultraviolet Radiation**  
-
-🌫️ **Air Quality Data** &nbsp; &nbsp; 🌿 **Pollen Data** &nbsp; &nbsp; ⚠️ **Weather Alerts**  
-🎥 **Camera Meteogram Display** &nbsp; &nbsp; 📷 **Preferred Camera Display**  
+## Features ✨
+- ✅ **Summary Weather Information**  
+- 🌡️ **Detailed Current Weather Data**  
+- 📅 **Detailed Forecast Weather Data**  
+- 🌊 **Detailed Forecast Sea Weather Data**  
+- ☀️ **Ultraviolet Radiation**  
+- 🌫️ **Air Quality Data**  
+- 🌿 **Pollen Data**  
+- ⚠️ **Weather Alerts**  
+- 🎥 **Camera Meteogram Display**  
+- 📷 **Preferred Camera Display**  
 
 ---
 
 ## Screenshots 📸  
 
-<p align="center">
-  <img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-full.png" width="45%" alt="Full Weather Card">
-  <img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-1.png" width="45%" alt="Weather Card Example">
-</p>
-
-<p align="center">
-  <img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-2.png" width="60%" alt="Weather Card Alternate Example">
-</p>
-
+<div align="center">
+  <img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-full.png" width="33%" alt="Full Weather Card">
+  <img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-1.png" width="33%" alt="Weather Card Example">
+  <img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-2.png" width="33%" alt="Weather Card Alternate Example">
+</div>
 
 ## **&#8212; Card Configuration &#8212;**
 
