@@ -94,8 +94,6 @@ If you configure Lovelace via YAML, add a reference to `ha-card-weather-conditio
 | Čeština             | `cs`           |
 | Русский             | `ru`           |
 
-**With using
-
 ## **Weather Card Parameters**
 
 The following parameters and card configurations are used to display the current and forecast weather data.
