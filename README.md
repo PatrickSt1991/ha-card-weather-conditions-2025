@@ -26,77 +26,100 @@
 ## Screenshots 📸  
 
 <div align="center">
-  <img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-full.png" width="33%" alt="Full Weather Card">
-  <img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-1.png" width="33%" alt="Weather Card Example">
-  <img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-2.png" width="33%" alt="Weather Card Alternate Example">
+  <img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-full.png" width="30%" alt="Full Weather Card">
+  <img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-1.png" width="30%" alt="Weather Card Example">
+  <img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-2.png" width="30%" alt="Weather Card Alternate Example">
 </div>
 
-## **&#8212; Card Configuration &#8212;**
+## Installation **
 
-To use the ```ha-card-weather-conditions``` card add the following to your ```lovelace``` configuration:
+### Manual Installation
+## HACS
+This card is available in HACS (Home Assistant Community Store).
 
-```yaml
-resources:
-  # if you have installed the card through the HACS integration
-  - url: /hacsfiles/ha-card-weather-conditions/ha-card-weather-conditions.js
-    type: module
-  #
-  # Optional:
-  # adding the card-mod plugin enable an advanced card look configuration
-  - url: /hacsfiles/lovelace-card-mod/card-mod.js
-    type: module
-  # ...
-```
+Just search for ha-card-weather-conditions-2025 in frontend plugins tab.
 
-## **&#8212; Card Parameters Summary &#8212;**
+## Manual
+If you configure Lovelace via YAML, add a reference to `ha-card-weather-conditions.js` inside your configuration.yaml:
 
-| **Name**     | **Type**      | **Requirement** | **Default**                       | **Description**                                                                               |
-|--------------|---------------|-----------------|-----------------------------------|-----------------------------------------------------------------------------------------------|
-| type         | string        | **Required**    |                                   | Card type must be `custom:ha-card-weather-conditions`                                         |                                                              |
-| name         | string        | Optional        |                                   | Card name shown on summary layer                                                              |
-| language     | string        | Optional        | `en`                              | Can take the values: `en`/`it`/`nl`/`es`/`de`/`fr`/`sr-latn`/`pt`/`da`/`no-NO`                |
-| animation    | boolean       | Optional        | `false`                           | Can take the values: `true`/`false`                                                           |
-| camera       | string        | Optional        |                                   | It is the camera id                                                                           |
-| uv           | object        | Optional        |                                   | It's the ultraviolet object, see the specific session.                                        |
-| pollen       | object        | Optional        |                                   | It's the pollen object, see the specific session.                                             |
-| air_quality  | object        | Optional        |                                   | It's the Air Quality object, see the specific session.                                        |
-| alert        | object        | Optional        |                                   | It's the Alert object, see the specific session.                                        |
-| weather      | object        | Optional        |                                   | It's the Weather object, see the specific session.                                            |
+1. Download vacuum-card.js file from the [latest-release](https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/releases/latest).
 
-## **&#8212; Weather Card Parameters &#8212;**
+2. Put `ha-card-weather-conditions.js` file into your config/www folder.
+
+3. Add reference to `ha-card-weather-conditions.js` in Lovelace. There's two way to do that:
+ - Using UI: Configuration → Lovelace Dashboards → Resources Tab → Click Plus button → Set Url as /local/ha-card-weather-conditions.js → Set Resource type as JavaScript Module. 
+ - Using YAML: Add following code to lovelace section.
+    ```yaml
+      resources:
+        - url: /local/ha-card-weather-conditions.js
+          type: module
+    ```
+4. Add custom: ha-card-weather-conditions.js to Lovelace UI as any other card (using either editor or YAML configuration).
+
+## **Card Parameters**
+
+| **Name**     | **Type**   | **Required** | **Default**                                  | **Description**                                      |
+|-------------|-----------|-------------|--------------------------------|--------------------------------------------------|
+| `type`      | string    | ✅ Yes      | `custom:ha-card-weather-conditions`          | The custom card type                              |
+| `name`      | string    | ❌ No       | *(empty)*                                    | Card name shown on summary layer                 |
+| `language`  | string    | ❌ No       | `en`                                        | See [Languages](#languages)                      |
+| `animation` | boolean   | ❌ No       | `false`                                     | Enable/disable animations (`true`/`false`)       |
+| `camera`    | string    | ❌ No       | *(empty)*                                    | Camera entity for display                        |
+| `uv`        | object    | ❌ No       | *(empty)*                                    | See [Ultraviolet Radiation](#ultraviolet)        |
+| `pollen`    | object    | ❌ No       | *(empty)*                                    | See [Pollen Data](#pollen)                       |
+| `air_quality` | object  | ❌ No       | *(empty)*                                    | See [Air Quality](#air-quality)                  |
+| `alert`     | object    | ❌ No       | *(empty)*                                    | See [Alert Section](#alert-parameters)           |
+| `weather`   | object    | ❌ No       | *(empty)*                                    | See [Weather Card Parameters](#weather-card-parameters) |
+
+## **Languages**
+| **Language**        | **Short Code** |
+|---------------------|----------------|
+| English             | `en`           |
+| Italiano            | `it`           |
+| Nederlands          | `nl`           |
+| Español             | `es`           |
+| Deutsch             | `de`           |
+| Français            | `fr`           |
+| Srpski              | `sr`           |
+| Português           | `pt`           |
+| Dansk               | `da`           |
+| Norsk (Nynorsk)     | `nn`           |
+
+## **Weather Card Parameters**
 
 The following parameters and card configurations are used to display the current and forecast weather data.
-The card has been tested with the sensors provided by `climacell`, `darksky` and `openweathermap` integrations. 
 
 #### **Parameters for the object: *weather*** 
-|       **Name**        |  **Type**   | **Requirement** | **Default** | **Description**                                                                                          |
-|-----------------------|-------------|-----------------|-------------|----------------------------------------------------------------------------------------------------------|
-| icons_model           | string      | Optional        | `climacell` | Icons template you want to use. Valid values are: `climacell`, `darksky`, `openweathermap`, `buienradar`, `defaulthass` |
-| current               | object list | Optional        |             | It is for the current weather data                                                                       |
-| forecast              | object list | Optional        |             | It is for the forecast weather data                                                                      |
+| **Name**            | **Type**      | **Required** | **Default** | **Description**                                                                                          |
+|---------------------|---------------|-----------------|-------------|----------------------------------------------------------------------------------------------------------|
+| `icons_model`       | string        | ❌ No           | `climacell` | Icons template to use. Valid values: `climacell`, `darksky`, `openweathermap`, `buienradar`, `defaulthass` |
+| `current`           | object list   | ❌ No           | *(empty)*   | Current weather data                                                                                     |
+| `forecast`          | object list   | ❌ No           | *(empty)*   | Forecast weather data                                                                                     |
 
-### **&#187; Current Weather Data**
+
+### **Current Weather Data**
 
 #### **Parameters for the object list: *current*** 
 
-|       **Name**        |  **Type**   | **Requirement** | **Default** | **Description**     |
-|-----------------------|-------------|-----------------|-------------|---------------------|
-| sun                   | string      | Optional        |             | It is the sensor id |
-| moon_phase            | string      | Optional        |             | It is the sensor id |
-| current_conditions    | string      | Optional        |             | It is the sensor id |
-| humidity              | string      | Optional        |             | It is the sensor id |
-| pressure              | string      | Optional        |             | It is the sensor id |
-| temperature           | string      | Optional        |             | It is the sensor id |
-| feels_like            | string      | Optional        |             | It is the sensor id |
-| visibility            | string      | Optional        |             | It is the sensor id |
-| wind_bearing          | string      | Optional        |             | It is the sensor id |
-| wind_speed            | string      | Optional        |             | It is the sensor id |
-| precipitation         | string      | Optional        |             | It is the sensor id |
-| forecast              | boolean     | Optional        | `false`     | It can take the values: `true` or `true`. If `true` then the summary layer will also show the daily forecast for temperature and precipitation (day_1). |
+| **Name**              | **Type**    | **Required** | **Default** | **Description**                                                                                             |
+|-----------------------|-------------|--------------|-------------|-------------------------------------------------------------------------------------------------------------|
+| `sun`                 | string      | ❌ No        | *(empty)*   | Sensor ID for sun data                                                                                      |
+| `moon_phase`          | string      | ❌ No        | *(empty)*   | Sensor ID for moon phase data                                                                                |
+| `current_conditions`  | string      | ❌ No        | *(empty)*   | Sensor ID for current weather conditions                                                                     |
+| `humidity`            | string      | ❌ No        | *(empty)*   | Sensor ID for humidity data                                                                                  |
+| `pressure`            | string      | ❌ No        | *(empty)*   | Sensor ID for atmospheric pressure                                                                            |
+| `temperature`         | string      | ❌ No        | *(empty)*   | Sensor ID for temperature data                                                                                |
+| `feels_like`          | string      | ❌ No        | *(empty)*   | Sensor ID for feels-like temperature data                                                                     |
+| `visibility`          | string      | ❌ No        | *(empty)*   | Sensor ID for visibility data                                                                                 |
+| `wind_bearing`        | string      | ❌ No        | *(empty)*   | Sensor ID for wind bearing data                                                                                |
+| `wind_speed`          | string      | ❌ No        | *(empty)*   | Sensor ID for wind speed data                                                                                 |
+| `precipitation`       | string      | ❌ No        | *(empty)*   | Sensor ID for precipitation data                                                                               |
+| `forecast`            | boolean     | ❌ No        | `false`     | Show daily forecast for temperature and precipitation if set to `true`.                                      |
+
 
 #### **Display the *Summary Layer*** 
 
-<img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-summary.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-summary.png" width="40%" height="auto" alt="Home Assistant lovelace card">
 
 ##### *Summary Layer*, example of card setup
 ```yaml
@@ -117,8 +140,8 @@ The card has been tested with the sensors provided by `climacell`, `darksky` and
 #### **Display the *Current Layer*** 
 
 <p float="left">
-<img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-current.png" width="40%" height="auto" alt="Home Assistant lovelace card">
-<img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-current-ext.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-current.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-current-ext.png" width="40%" height="auto" alt="Home Assistant lovelace card">
 </p>
 
 ##### *Current Layer*, example of card setup
@@ -152,7 +175,7 @@ The card has been tested with the sensors provided by `climacell`, `darksky` and
 
 #### **Display the *Summary & Current Layer*** 
 
-<img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-summary+current.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-summary+current.png" width="40%" height="auto" alt="Home Assistant lovelace card">
 
 ##### *Summary & Current Layer*, example of card setup
 
@@ -187,31 +210,33 @@ The card has been tested with the sensors provided by `climacell`, `darksky` and
       precipitation_intensity:
         day_1: sensor.cc_test_precipitation_max_0d
 ```
-### **&#187; Forecast Weather Data**
+### ** Forecast Weather Data**
 
 #### **Parameters for the object list: *forecast*** 
-|       **Name**            |  **Type**   | **Requirement** | **Description**     |
-|---------------------------|-------------|-----------------|---------------------|
-| meteogram                 | string      | Optional        | It is the camera id |
-| icons                     | object list | Optional        | It is the sensor id |
-| temperature_high          | object list | Optional        | It is the sensor id |
-| temperature_low           | object list | Optional        | It is the sensor id |
-| precipitation_probability | object list | Optional        | It is the sensor id |
-| precipitation_intensity   | object list | Optional        | It is the sensor id |
+| **Name**                     | **Type**      | **Required** | **Description**                         |
+|------------------------------|---------------|-----------------|-----------------------------------------|
+| `meteogram`                  | string        | ❌ No           | Camera ID for the meteogram data       |
+| `icons`                      | object list   | ❌ No           | Sensor IDs for weather icons            |
+| `temperature_high`           | object list   | ❌ No           | Sensor IDs for high temperature values  |
+| `temperature_low`            | object list   | ❌ No           | Sensor IDs for low temperature values   |
+| `precipitation_probability`  | object list   | ❌ No           | Sensor IDs for precipitation probabilities |
+| `precipitation_intensity`    | object list   | ❌ No           | Sensor IDs for precipitation intensity   |
+
 
 #### **Parameters for the object list: *icons, temperature_high, temperature_low, precipitation_probability, precipitation_intensity*** 
 
-| **Name** |  **Type**   | **Requirement** | **Description**                                                         |
-|----------|-------------|-----------------|-------------------------------------------------------------------------|
-| day_1    | string      | Optional        | It is the sensor id. The day_1 sensor is for the current day forecast.  |
-| day_2    | string      | Optional        | It is the sensor id                                                     |
-| day_3    | string      | Optional        | It is the sensor id                                                     |
-| day_4    | string      | Optional        | It is the sensor id                                                     |
-| day_5    | string      | Optional        | It is the sensor id                                                     |
+| **Name** | **Type** | **Required** | **Description**                                      |
+|----------|----------|--------------|------------------------------------------------------|
+| `day_1`  | string   | ❌ No        | Sensor ID for the current day forecast.              |
+| `day_2`  | string   | ❌ No        | Sensor ID for the second day forecast.               |
+| `day_3`  | string   | ❌ No        | Sensor ID for the third day forecast.                |
+| `day_4`  | string   | ❌ No        | Sensor ID for the fourth day forecast.               |
+| `day_5`  | string   | ❌ No        | Sensor ID for the fifth day forecast.                |
+
 
 #### **Display the *Forecast Layer*** 
 
-<img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-forecast.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-forecast.png" width="40%" height="auto" alt="Home Assistant lovelace card">
 
 ##### *Forecast Layer*, example of card setup
 
@@ -266,34 +291,34 @@ To capitalize the name of the days of the week use `style` directive:
       text-transform: capitalize;
   }
 ```
-### **&#187; Sea Forecast Weather Data**
+### ** Sea Forecast Weather Data**
 
 #### **Parameters for the object list: *sea*** 
-|       **Name**    |  **Type**   | **Requirement** | **Description**     |
-|-------------------|-------------|-----------------|---------------------|
-| swell_direction   | object list | Optional        | It is the camera id |
-| swell_height      | object list | Optional        | It is the sensor id |
-| swell_period      | object list | Optional        | It is the sensor id |
-| wind_direction    | object list | Optional        | It is the sensor id |
-| wind_speed        | object list | Optional        | It is the sensor id |
-| air_temperature   | object list | Optional        | It is the sensor id |
-| water_temperature | object list | Optional        | It is the sensor id |
+| **Name**              | **Type**      | **Required** | **Description**                            |
+|-----------------------|---------------|--------------|--------------------------------------------|
+| `swell_direction`     | object list   | ❌ No        | Sensor ID for swell direction data         |
+| `swell_height`        | object list   | ❌ No        | Sensor ID for swell height data            |
+| `swell_period`        | object list   | ❌ No        | Sensor ID for swell period data            |
+| `wind_direction`      | object list   | ❌ No        | Sensor ID for wind direction data          |
+| `wind_speed`          | object list   | ❌ No        | Sensor ID for wind speed data              |
+| `air_temperature`     | object list   | ❌ No        | Sensor ID for air temperature data         |
+| `water_temperature`   | object list   | ❌ No        | Sensor ID for water temperature data       |
 
 #### **Parameters for the object list: *swell_direction, swell_height, swell_period, wind_direction, wind_speed, air_temperature, water_temperature*** 
 
-| **Name** |  **Type**   | **Requirement** | **Description**                                                         |
-|----------|-------------|-----------------|-------------------------------------------------------------------------|
-| hour_1   | string      | Optional        | It is the sensor id                                                     |
-| hour_2   | string      | Optional        | It is the sensor id                                                     |
-| hour_3   | string      | Optional        | It is the sensor id                                                     |
-| hour_4   | string      | Optional        | It is the sensor id                                                     |
-| hour_5   | string      | Optional        | It is the sensor id                                                     |
-| hour_6   | string      | Optional        | It is the sensor id                                                     |
-| hour_7   | string      | Optional        | It is the sensor id                                                     |
+| **Name** | **Type** | **Required** | **Description**                              |
+|----------|----------|--------------|----------------------------------------------|
+| `hour_1` | string   | ❌ No        | Sensor ID for the forecast for hour 1.      |
+| `hour_2` | string   | ❌ No        | Sensor ID for the forecast for hour 2.      |
+| `hour_3` | string   | ❌ No        | Sensor ID for the forecast for hour 3.      |
+| `hour_4` | string   | ❌ No        | Sensor ID for the forecast for hour 4.      |
+| `hour_5` | string   | ❌ No        | Sensor ID for the forecast for hour 5.      |
+| `hour_6` | string   | ❌ No        | Sensor ID for the forecast for hour 6.      |
+| `hour_7` | string   | ❌ No        | Sensor ID for the forecast for hour 7.      |
 
 #### **Display the *Sea Forecast Layer*** 
 
-<img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-sea.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-sea.png" width="40%" height="auto" alt="Home Assistant lovelace card">
 
 ##### *Sea Forecast Layer*, example of card setup
 
@@ -360,29 +385,29 @@ To capitalize the name of the days of the week use `style` directive:
       hour_7: sensor.sg_piscinas_water_temperature_0h
 ```
 
-## **&#8212; Ultraviolet Radiation Parameters &#8212;**
+## **Ultraviolet Radiation Parameters**
 
 The card has been tested with the sensors provided by `openuv` integrations. 
 
 #### **Parameters for the object: *uv*** 
    
-| **Name**          | **Type** | **Requirement** | **Description**                                            |
-|-------------------|----------|-----------------|------------------------------------------------------------|
-| protection_window | string   | Optional        | Binary Sensor                                              |
-| ozone_level       | string   | Optional        | Ozone level in du (Dobson Units) from OMI data sensor      |
-| uv_index          | string   | Optional        | UV Index sensor                                            |
-| uv_level          | string   | Optional        | UV level sensor                                            |
-| max_uv_index      | string   | Optional        | max UV Index for the day (at solar noon) sensor            |
-| set_skin_type_1   | string   | Optional        | Safe exposure time (mins) till burn for Skin Type 1 sensor |
-| set_skin_type_2   | string   | Optional        | Safe exposure time (mins) till burn for Skin Type 2 sensor |
-| set_skin_type_3   | string   | Optional        | Safe exposure time (mins) till burn for Skin Type 3 sensor |
-| set_skin_type_4   | string   | Optional        | Safe exposure time (mins) till burn for Skin Type 4 sensor |
-| set_skin_type_5   | string   | Optional        | Safe exposure time (mins) till burn for Skin Type 5 sensor |
-| set_skin_type_6   | string   | Optional        | Safe exposure time (mins) till burn for Skin Type 6 sensor |
+| **Name**                | **Type** | **Required** | **Description**                                          |
+|-------------------------|----------|--------------|----------------------------------------------------------|
+| `protection_window`     | string   | ❌ No        | Binary sensor indicating the protection window status.   |
+| `ozone_level`           | string   | ❌ No        | Ozone level in Dobson Units (du) from the OMI data sensor. |
+| `uv_index`              | string   | ❌ No        | Sensor providing the UV Index.                           |
+| `uv_level`              | string   | ❌ No        | Sensor providing the UV level.                           |
+| `max_uv_index`          | string   | ❌ No        | Maximum UV Index for the day (measured at solar noon). |
+| `set_skin_type_1`       | string   | ❌ No        | Safe exposure time (in minutes) till burn for Skin Type 1. |
+| `set_skin_type_2`       | string   | ❌ No        | Safe exposure time (in minutes) till burn for Skin Type 2. |
+| `set_skin_type_3`       | string   | ❌ No        | Safe exposure time (in minutes) till burn for Skin Type 3. |
+| `set_skin_type_4`       | string   | ❌ No        | Safe exposure time (in minutes) till burn for Skin Type 4. |
+| `set_skin_type_5`       | string   | ❌ No        | Safe exposure time (in minutes) till burn for Skin Type 5. |
+| `set_skin_type_6`       | string   | ❌ No        | Safe exposure time (in minutes) till burn for Skin Type 6. |
 
 #### **Display the *Ultraviolet Radiation Layer*** 
 
-<img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-uv.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-uv.png" width="40%" height="auto" alt="Home Assistant lovelace card">
 
 ##### *Ultraviolet Radiation Layer*, example of card setup
 ```yaml
@@ -401,32 +426,33 @@ The card has been tested with the sensors provided by `openuv` integrations.
     set_skin_type_6: sensor.skin_type_6_safe_exposure_time
 ```
 
-## **&#8212; Pollen Parameters &#8212;**
+## **Pollen Parameters**
 
 The card has been tested with the sensors provided by `climacell` integrations. 
 
 #### **Parameters for the object: *pollen*** 
  
-| **Name** |  **Type**   | **Requirement** | **Description**         |
-|----------|-------------|-----------------|-------------------------|
-| tree     | object list | Optional        | Pollen tree             |
-| weed     | object list | Optional        | Pollen weed             |
-| grass    | object list | Optional        | Pollen grass            |
+| **Name**   | **Type**      | **Required** | **Description**           |
+|------------|---------------|--------------|---------------------------|
+| `tree`     | object list   | ❌ No        | Object list for pollen trees.     |
+| `weed`     | object list   | ❌ No        | Object list for pollen weeds.     |
+| `grass`    | object list   | ❌ No        | Object list for pollen grasses.   |
 
 #### **Parameters for the object list: *tree, weed, grass*** 
 
-| **Name** |  **Type**   | **Requirement** | **Description**                            |
-|----------|-------------|-----------------|--------------------------------------------|
-| entity   | string      | **Required**    | It is the sensor id                        |
-| icon     | string      | Optional        | Icon override for the sensor               |
-| min      | number      | **Required**    | Min sensor value                           |
-| max      | number      | **Required**    | Max sensor value                           |
-| low      | number      | Optional        | Low Pollen value (min < low < high < max)  |
-| high     | number      | Optional        | High Pollen value (min < low < high < max) |
+| **Name**   | **Type** | **Required** | **Description**                                          |
+|------------|----------|--------------|----------------------------------------------------------|
+| `entity`   | string   | ✅ Yes       | Sensor ID for the pollen data.                          |
+| `icon`     | string   | ❌ No        | Icon override for the sensor.                           |
+| `min`      | number   | ✅ Yes       | Minimum sensor value.                                   |
+| `max`      | number   | ✅ Yes       | Maximum sensor value.                                   |
+| `low`      | number   | ❌ No        | Low pollen value (must satisfy: min < low < high < max). |
+| `high`     | number   | ❌ No        | High pollen value (must satisfy: min < low < high < max). |
+
 
 #### **Display the *Pollen Layer*** 
 
-<img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-pollen.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-pollen.png" width="40%" height="auto" alt="Home Assistant lovelace card">
 
 ##### *Pollen Layer*, example of card setup
 
@@ -453,24 +479,24 @@ The card has been tested with the sensors provided by `climacell` integrations.
       high: 3
 ```
 
-## **&#8212; Air Quality Parameters &#8212;**
+## **Air Quality Parameters**
 
 #### **Parameters for the object: *air_quality*** 
 
-|       **Name**        |  **Type**   | **Requirement** | **Description**         |
-|-----------------------|-------------|-----------------|-------------------------|
-| pm25                  | string      | Optional        | It is the sensor id     |
-| pm10                  | string      | Optional        | It is the sensor id     |
-| o3                    | string      | Optional        | It is the sensor id     |
-| no2                   | string      | Optional        | It is the sensor id     |
-| co                    | string      | Optional        | It is the sensor id     |
-| so2                   | string      | Optional        | It is the sensor id     |
-| epa_aqi               | string      | Optional        | It is the sensor id     |
-| epa_health_concern    | string      | Optional        | It is the sensor id     |
+| **Name**               | **Type** | **Required** | **Description**                          |
+|------------------------|----------|--------------|------------------------------------------|
+| `pm25`                 | string   | ❌ No        | Sensor ID for PM2.5 data.               |
+| `pm10`                 | string   | ❌ No        | Sensor ID for PM10 data.                |
+| `o3`                   | string   | ❌ No        | Sensor ID for ozone (O3) data.          |
+| `no2`                  | string   | ❌ No        | Sensor ID for nitrogen dioxide (NO2) data. |
+| `co`                   | string   | ❌ No        | Sensor ID for carbon monoxide (CO) data. |
+| `so2`                  | string   | ❌ No        | Sensor ID for sulfur dioxide (SO2) data. |
+| `epa_aqi`              | string   | ❌ No        | Sensor ID for EPA Air Quality Index (AQI). |
+| `epa_health_concern`   | string   | ❌ No        | Sensor ID for EPA health concern level. |
 
 #### **Display the *Air Quality Layer*** 
 
-<img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-air-quality.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-air-quality.png" width="40%" height="auto" alt="Home Assistant lovelace card">
 
 ##### *Air Quality Layer*, example of card setup
 
@@ -487,38 +513,41 @@ The card has been tested with the sensors provided by `climacell` integrations.
     epa_health_concern: sensor.cc_test_epa_health_concern
 ```
 
-## **&#8212; Alert Parameters &#8212;**
+## **Alert Parameters**
 
 #### **Parameters for the object: *alert*** 
 
-|       **Name**        |  **Type**   | **Requirement** | **Description**         |
-|-----------------------|-------------|-----------------|-------------------------|
-| fire_risk             | object list | Optional        | Fire object             |
-| thunderstorms_risk    | object list | Optional        | thunderstorms           |
-| hydraulic_risk        | object list | Optional        | hydraulic id            |
-| hydrogeological_risk  | object list | Optional        | hydrogeological         |
+| **Name**                   | **Type**      | **Required** | **Description**                   |
+|----------------------------|---------------|--------------|-----------------------------------|
+| `fire_risk`                | object list   | ❌ No        | Object list for fire risk data.   |
+| `thunderstorms_risk`       | object list   | ❌ No        | Object list for thunderstorms risk.|
+| `hydraulic_risk`           | object list   | ❌ No        | Object list for hydraulic risk data.|
+| `hydrogeological_risk`     | object list   | ❌ No        | Object list for hydrogeological risk data.|
+
 
 #### **Parameters for the object list: *fire_risk*** 
 
-| **Name**   |  **Type**   | **Requirement** | **Description**                                        |
-|------------|-------------|-----------------|--------------------------------------------------------|
-| entity     | string      | **Required**    | It is the sensor id                                    |
-| icon       | number      | Optional        | Name of the icon to be used instead of the sensor icon |
-| min        | number      | **Required**    | Min sensor value                                       |
-| max        | number      | **Required**    | Max sensor value                                       |
-| show_if_ge | number      | Optional        | Show alert if the value is greater or equals to ...    |
+| **Name**        | **Type**  | **Required** | **Description**                                             |
+|-----------------|-----------|--------------|-------------------------------------------------------------|
+| `entity`        | string    | ✅ Yes       | Sensor ID for the entity.                                  |
+| `icon`          | number    | ❌ No        | Name of the icon to use instead of the default sensor icon.|
+| `min`           | number    | ✅ Yes       | Minimum sensor value.                                      |
+| `max`           | number    | ✅ Yes       | Maximum sensor value.                                      |
+| `show_if_ge`    | number    | ❌ No        | Show alert if the value is greater than or equal to this value. |
+
 
 #### **Parameters for the object list: *thunderstorms_risk, hydraulic_risk, hydrogeological_risk*** 
 
-| **Name**   |  **Type**   | **Requirement** | **Description**                                        |
-|------------|-------------|-----------------|--------------------------------------------------------|
-| entity     | string      | **Required**    | It is the binary sensor id                             |
-| icon       | number      | Optional        | Name of the icon to be used instead of the sensor icon |
-| show_if_on | number      | Optional        | MShow alert if the value is `on`                       |
+| **Name**        | **Type**  | **Required** | **Description**                                              |
+|-----------------|-----------|--------------|--------------------------------------------------------------|
+| `entity`        | string    | ✅ Yes       | Sensor ID for the entity.                                   |
+| `icon`          | number    | ❌ No        | Name of the icon to use instead of the default sensor icon. |
+| `show_if_on`    | number    | ❌ No        | Show alert if the value is `on`.                            |
+
 
 #### **Display the *Alert Layer*** 
 
-<img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-alert.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-alert.png" width="40%" height="auto" alt="Home Assistant lovelace card">
 
 ##### *Alert Layer*, example of card setup
 
@@ -542,7 +571,7 @@ The card has been tested with the sensors provided by `climacell` integrations.
       entity: binary_sensor.dpc_acquafredda_idrogeologico_oggi
 ```
 
-## **&#8212; Other examples &#8212;**
+## **Other examples**
 
 ### **Climacell full card**
 
@@ -627,6 +656,4 @@ The card has been tested with the sensors provided by `climacell` integrations.
         day_5: sensor.cc_test_precipitation_max_4d
 ```
 
-[license-shield]:https://img.shields.io/github/license/r-renato/ha-card-weather-conditions
-[buymecoffee]: https://www.buymeacoffee.com/0D3WbkKrn
-[buymecoffeebadge]: https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow?style=for-the-badge
+[license-shield]:https://img.shields.io/github/license/PatrickSt1991/ha-card-weather-conditions-2025
