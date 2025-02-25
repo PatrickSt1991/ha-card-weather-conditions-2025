@@ -4,7 +4,9 @@
 
 [![License][license-shield]](LICENSE)
 
-[![Language grade: JavaScript]](https://shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=flat-square)
+![Language grade: JavaScript](https://shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=flat-square)
+
+![Support Ukraine](https://img.shields.io/badge/Support-Ukraine-FFD500?style=flat&labelColor=005BBB)
 
 
 ## Features
@@ -31,9 +33,18 @@
   <img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-2.png" width="30%" alt="Weather Card Alternate Example">
 </div>
 
-## Installation **
+## **Terms of use**
+By using this project or its source code, for any purpose and in any shape or form, you grant your implicit agreement to all the following statements:
 
-### Manual Installation
+- You **condemn Russia and its military aggression against Ukraine**
+- You **recognize that Russia is an occupant that unlawfully invaded a sovereign state**
+- You **support Ukraine's territorial integrity, including its claims over temporarily occupied territories of Crimea and Donbas**
+- You **reject false narratives perpetuated by Russian state propaganda**
+To learn more about the war and how you can help, [click here](https://tyrrrz.me/ukraine). Glory to Ukraine! 🇺🇦
+
+
+## **Installation**
+
 ## HACS
 This card is available in HACS (Home Assistant Community Store).
 
@@ -84,6 +95,10 @@ If you configure Lovelace via YAML, add a reference to `ha-card-weather-conditio
 | Português           | `pt`           |
 | Dansk               | `da`           |
 | Norsk (Nynorsk)     | `nn`           |
+| Čeština             | `cs`           |
+| Русский             | `ru`           |
+
+**With using
 
 ## **Weather Card Parameters**
 
