@@ -1,6 +1,8 @@
 {
-  "name": "HA (Lovelace) Card Weather Conditions",
-  "domains": ["weather"],
-  "render_readme": false,
-  "filename": "ha-card-weather-conditions.js"
+  "name": "Weather Conditions Card",
+  "render_readme": true,
+  "filename": "dist/ha-card-weather-conditions.js",
+  "frontend": true,
+  "country": "worldwide",
+  "homeassistant": "2024.3.3"
 }

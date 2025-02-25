@@ -1,34 +1,34 @@
 # Weather Conditions Card
-### ... is a Lovelace card for Home Assistant.<br>
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/hacs/integration)
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-blue.svg)](https://github.com/hacs/integration)
 
 [![License][license-shield]](LICENSE)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/r-renato/ha-card-weather-conditions.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/r-renato/ha-card-weather-conditions/alerts/)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/r-renato/ha-card-weather-conditions.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/r-renato/ha-card-weather-conditions/context:javascript)
+[![Language grade: JavaScript](https://shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=flat-square)]
 
-[![BuyMeCoffee][buymecoffeebadge]][buymecoffee]
 
 ## Features
 
-* Display summary weather information
-* Display detailed current weather data
-* Display detailed forecast weather data
-* Display detailed forecast sea weather data
-* Display Ultraviolet Radiation
-* Display Air Quality data
-* Display Pollen data
-* Display Alert
-* Display camera meteogram
-* Display preferred camera
+## Features ✨
+- ✅ **Summary Weather Information**  
+- 🌡️ **Detailed Current Weather Data**  
+- 📅 **Detailed Forecast Weather Data**  
+- 🌊 **Detailed Forecast Sea Weather Data**  
+- ☀️ **Ultraviolet Radiation**  
+- 🌫️ **Air Quality Data**  
+- 🌿 **Pollen Data**  
+- ⚠️ **Weather Alerts**  
+- 🎥 **Camera Meteogram Display**  
+- 📷 **Preferred Camera Display**  
 
-<p float="left">
-<img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-full.png" width="40%" height="auto" alt="Home Assistant lovelace card">
-<img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-1.png" width="40%" height="auto" alt="Home Assistant lovelace card">
-</p>
-<p float="left">
-<img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-2.png" width="40%" height="auto" alt="Home Assistant lovelace card">
-</p>    
+---
+
+## Screenshots 📸  
+
+<div align="center">
+  <img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-full.png" width="45%" alt="Full Weather Card">
+  <img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-1.png" width="45%" alt="Weather Card Example">
+  <img src="https://github.com/r-renato/ha-card-weather-conditions/raw/master/md.images/ha-card-weather-condition-2.png" width="60%" alt="Weather Card Alternate Example">
+</div>
 
 ## **&#8212; Card Configuration &#8212;**
 
