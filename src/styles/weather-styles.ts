@@ -1,4 +1,298 @@
-import {css} from 'lit-element';
+import { css } from 'lit';
+
+export const WeatherStyles = css`
+  ha-card {
+    cursor: pointer;
+    position: relative;
+    padding: 16px;
+    overflow: hidden;
+    border-radius: var(--ha-card-border-radius, 12px);
+    box-shadow: var(--ha-card-box-shadow, none);
+  }
+
+  .current {
+    padding-top: 1.2em;
+    margin-bottom: 3.5em;
+    position: relative;
+  }
+
+  .icon.bigger {
+    width: 10em;
+    height: 10em;
+    margin-top: -4em;
+    position: absolute;
+    left: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .title {
+    position: absolute;
+    left: calc(140px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    top: 0.6em;
+    font-weight: 300;
+    font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    color: var(--primary-text-color);
+  }
+
+  .moon {
+    position: absolute;
+    left: calc(115px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    top: calc(63px - (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    font-weight: 300;
+    font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    color: var(--primary-text-color);
+    line-height: 20px;
+  }
+
+  .temp {
+    position: absolute;
+    font-weight: 300;
+    font-size: calc(35px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    color: var(--primary-text-color);
+    right: 1em;
+  }
+
+  .tempc {
+    position: absolute;
+    font-weight: 300;
+    font-size: calc(12px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    vertical-align: super;
+    color: var(--primary-text-color);
+    right: 0.7em;
+    margin-top: -11px;
+  }
+
+  .variations {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    font-weight: 300;
+    color: var(--primary-text-color);
+    list-style: none;
+    padding: 3px 1em;
+    margin: 0;
+  }
+
+  .variations ha-icon {
+    height: 22px;
+    margin-right: 5px;
+    color: var(--paper-item-icon-color);
+  }
+
+  .variations svg {
+    height: 15px;
+    margin-right: 5px;
+    fill: var(--paper-item-icon-color);
+  }
+
+  .variations li {
+    flex-basis: auto;
+    width: 50%;
+  }
+
+  .variations li:nth-child(2n) {
+    text-align: right;
+  }
+
+  .variations li:nth-child(2n) ha-icon {
+    margin-right: 0;
+    margin-left: 8px;
+    float: right;
+  }
+
+  .spacer {
+    padding-top: 1em;
+    border-top: solid 1px var(--primary-text-color);
+  }
+
+  .meter {
+    background: #efefef;
+    border-radius: 8px;
+    height: 0.75em;
+    max-width: 5.5em;
+    overflow: hidden;
+  }
+
+  .forecast {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+  }
+
+  .day {
+    flex: 1;
+    display: block;
+    text-align: center;
+    color: var(--primary-text-color);
+    border-right: 0.1em solid #d9d9d9;
+    line-height: 2;
+  }
+
+  .dayname {
+    text-transform: uppercase;
+  }
+
+  .icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .icon.bigger {
+      width: 8em;
+      height: 8em;
+    }
+    .title, .moon {
+      font-size: calc(12px + (22 - 12) * ((100vw - 300px) / (600 - 300)));
+    }
+  }
+`;
+
+export const styleCamera = css`
+      .camera-container {
+        margin-top: 10px;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: stretch;
+      } 
+      .camera-image {
+        flex: 3;
+        height: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .camera-image > img {
+        display: inline-block;
+        max-width: 100%;
+        max-height: 100%;
+      }
+`;
+
+export const styleNightAndDay = css`
+  .nd-container {
+    margin: auto;
+    padding-top: 1.3em;
+    padding-bottom: 1.3em;
+    padding-left: 1em;
+    padding-right: 1em;    
+    position: relative;
+    overflow: hidden;
+  }
+`;
+
+export const styleForecast = css`
+  .day {
+    flex: 1;
+    display: block;
+    text-align: center;
+    color: var(--primary-text-color);
+    border-right: 0.1em solid #d9d9d9;
+    line-height: 2;
+    box-sizing: border-box;
+  }
+  
+  .dayname {
+    text-transform: uppercase;
+  }
+      
+  .icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+  }   
+      
+  .forecast {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+  }
+  
+  .forecast .day:first-child {
+    margin-left: 0;
+  }
+  
+  .forecast .day:nth-last-child(1) {
+    border-right: none;
+    margin-right: 0;
+  }  
+`;
+
+export const styleMeter = css`
+  .meter {
+    background: #efefef; /* Grigio */
+    border-radius: 8px;
+    border: 1px solid transparent; /* 2 */
+    box-shadow:
+      0 1px 3px 1px rgba(0,0,0,0.15) inset,
+      0 0 0 1px #333; /* 1 */
+    height: .75em;
+    max-width: 5.5em;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  /* WebKit */
+  .meter::-webkit-meter-bar {
+    background: #efefef; /* Grigio */
+    border: 1px solid transparent; /* 2 */
+    border-radius: 8px;
+  }
+
+  .meter::-webkit-meter-optimum-value,
+  .meter::-webkit-meter-suboptimum-value,
+  .meter::-webkit-meter-even-less-good-value {
+    border-radius: 8px; 
+  }
+
+  .meter::-webkit-meter-optimum-value {
+    background: #85cc00; /* verde #3C5C00; */
+  }
+      
+  .meter::-webkit-meter-suboptimum-value {
+    background: #F5D000;
+  }
+      
+  .meter::-webkit-meter-even-less-good-value  {
+    background: #e65000 ; /* Rosso #D14900; */
+  }
+
+  /* Firefox */
+  .meter::-moz-meter-bar {
+    border-radius: 8px;
+  }
+
+  .meter:-moz-meter-optimum::-moz-meter-bar {
+    background: #3C5C00;
+  }
+
+  .meter:-moz-meter-sub-optimum::-moz-meter-bar {
+    background: #F5D000;
+  }
+
+  .meter:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+    background: #D14900;
+  }
+
+`;
 
 export const getSeaStyle = (path) => {
   return `
@@ -11,7 +305,6 @@ export const getSeaStyle = (path) => {
 
 table.synoptic tr:not(:last-child) {
   border-bottom: 1px solid #476b6b;
-  // background-color: cadetblue;
 }
   
 table.synoptic td {
@@ -296,7 +589,6 @@ table.synoptic td {
     background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjgzLjUgMjgzLjUiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI4My41IDI4My41OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4uc3Qwe2ZpbGw6I0ZGRkZGRjt9PC9zdHlsZT48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTU1LjMsMTQyLjFjMCwwLDIuMi0yMy43LDYuOS00OS42YzIuMi0xMi4yLDguMi01NC4xLDguMi01NC4xaC0yNmgtMjZjMCwwLDYsNDEuOSw4LjIsNTQuMWM0LjcsMjUuOSw2LjksNDkuNiw2LjksNDkuNmwtNTkuMi0yNC42bDcwLjEsMTMxLjJsNzAuMS0xMzEuMkwxNTUuMywxNDIuMXoiLz48L3N2Zz4=)
 }
 
-// ----
 .svg-swell-icon {
     width: 21px;
     height: 21px
@@ -333,4 +625,57 @@ table.synoptic td {
 ` ;
 } ;
 
+export const styleSummary = css`
+  .current {
+    padding-top: 1.2em;
+    margin-bottom: 3.5em;
+  }
+  
+  .icon.bigger {
+    width: 10em;
+    height: 10em;
+    margin-top: -4em;
+    position: absolute;
+    left: 0em;
+  }
+  
+  .title {
+    position: absolute;
+    left: calc(140px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    top: 0.6em;
+    font-weight: 300;
+    font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    color: var(--primary-text-color);
+  }
+  .moon {
+    position: absolute;
+    left: calc(115px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    top: calc(63px - (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    font-weight: 300;
+    font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    color: var(--primary-text-color);
+    line-height:20px;
+    display: inline-block;
+  }
+            
+  .temp {
+    position: absolute;
+    font-weight: 300;
+    font-size: calc(35px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    color: var(--primary-text-color);
+    right: 1em;
+    margin-top: 2px;
+  }
 
+  .tempc {
+    position: absolute;
+    font-weight: 300;
+    font-size: calc(12px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+    vertical-align: super;
+    color: var(--primary-text-color);
+    right: 0.7em;
+    margin-top: -11px;
+    margin-right: 7px;
+  }      
+     
+`;
