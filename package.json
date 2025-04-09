@@ -1,7 +1,7 @@
 {
   "name": "ha-card-weather-conditions",
-  "version": "1.0.0",
-  "description": "Home Assistant lovelace card for display weather data.",
+  "version": "2.0.0",
+  "description": "Home Assistant lovelace card for displaying weather data (modern version)",
   "keywords": [
     "home-assistant",
     "homeassistant",
@@ -11,45 +11,42 @@
     "custom-cards",
     "weather"
   ],
-  "homepage": "https://github.com/r-renato/ha-card-weather-conditions#readme",
+  "homepage": "https://github.com/PatrickSt1991/ha-card-weather-conditions-2025",
+  "type": "module",
   "module": "ha-card-weather-conditions.js",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/r-renato/ha-card-weather-conditions.git"
+    "url": "git+https://github.com/PatrickSt1991/ha-card-weather-conditions-2025.git"
   },
-  "author": "Renato Rossi",
+  "author": "PatrickSt1991",
   "license": "MIT",
   "dependencies": {
-    "custom-card-helpers": "^1.0.8",
-    "lit-element": "^2.1.0"
+    "lit": "^3.0.0",
+    "@lit-labs/motion": "^1.0.0",
+    "custom-card-helpers": "^1.12.0",
+    "home-assistant-js-websocket": "^8.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/plugin-proposal-class-properties": "^7.4.0",
-    "@babel/plugin-proposal-decorators": "^7.4.0",
-    "@typescript-eslint/eslint-plugin": "^1.4.2",
-    "@typescript-eslint/parser": "^1.4.1",
-    "eslint": "^5.14.1",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0",
-    "prettier": "^1.16.4",
-    "rollup": "^1.2.3",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-node-resolve": "^4.0.1",
-    "rollup-plugin-terser": "^4.0.4",
-    "rollup-plugin-typescript2": "^0.19.2",
-    "rollup-plugin-uglify": "^6.0.2",
-    "rollup-plugin-execute": "^1.1.1",
-    "typescript": "^3.3.3333"
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
+    "esbuild": "^0.20.2",
+    "eslint": "^8.56.0",
+    "eslint-config-airbnb-base": "^16.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "prettier": "^3.2.4",
+    "typescript": "^5.3.3",
+    "vite": "^5.1.4",
+    "@vitejs/plugin-legacy": "^5.0.4"
   },
   "bugs": {
-    "url": "https://github.com/r-renato/ha-card-weather-conditions/issues"
+    "url": "https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/issues"
   },
-  "main": "index.js",
   "scripts": {
-    "watch": "rollup -c --watch",
-    "build": "npm run lint && npm run rollup",
-    "lint": "eslint src/*.ts",
-    "rollup": "rollup -c --no-compact "
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write src/**/*.ts",
+    "preview": "vite preview"
   }
 }

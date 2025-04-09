@@ -1,6 +1,22 @@
-extends: airbnb-base
+env:
+  browser: true
+  es2021: true
+extends:
+  - airbnb-base
+  - eslint:recommended
+  - plugin:@typescript-eslint/recommended
+  - plugin:lit/recommended
+  - prettier
 parser: "@typescript-eslint/parser"
+parserOptions:
+  ecmaVersion: 2021
+  sourceType: module
+  project: "./tsconfig.json"
+plugins:
+  - "@typescript-eslint"
+  - lit
 rules:
+  # Your existing rule overrides
   no-else-return: 0
   no-underscore-dangle: 0
   nonblock-statement-body-position: 0
@@ -11,12 +27,42 @@ rules:
   class-methods-use-this: 0
   no-nested-ternary: 0
   camelcase: 0
-  no-unused-vars: 0
   quotes: 0
   comma-dangle: 0
   import/no-unresolved: 0
   import/prefer-default-export: 0
+
+  # TypeScript specific rules
+  "@typescript-eslint/no-unused-vars": 
+    - warn
+    - argsIgnorePattern: "^_"
+  "@typescript-eslint/explicit-module-boundary-types": off
+  "@typescript-eslint/no-explicit-any": warn
+  "@typescript-eslint/ban-ts-comment": warn
+
+  # Lit specific rules
+  lit/no-native-attributes: error
+  lit/no-invalid-html: error
+  lit/binding-positions: error
+  lit/no-property-change-update: warn
+
+  # Modern JS/TS rules
+  import/extensions: 
+    - error
+    - ignorePackages:
+        js: never
+        ts: never
+  no-shadow: off
+  "@typescript-eslint/no-shadow": warn
+  no-console: warn
+  arrow-body-style: off
+  prefer-arrow-callback: off
 globals:
-  window: true
-  Event: true
-  customElements: true
+  HomeAssistant: readonly
+  customElements: readonly
+  window: readonly
+  Event: readonly
+  h: readonly
+  LitElement: readonly
+  css: readonly
+  html: readonly
