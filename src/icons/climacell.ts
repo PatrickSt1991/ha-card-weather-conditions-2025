@@ -1,92 +1,39 @@
-/**
- * Day icon mappings for Climacell weather conditions
- */
-export const climacellDayIcons: { [key: string]: string } = {
-    "clear": "clear_day",
-    "mostly_clear": "mostly_clear_day",
-    "partly_cloudy": "partly_cloudy_day",
-    "mostly_cloudy": "mostly_cloudy",
-    "cloudy": "cloudy",
-    "fog": "fog",
-    "light_fog": "fog_light",
-    "drizzle": "drizzle",
-    "rain": "rain",
-    "light_rain": "rain_light",
-    "heavy_rain": "rain_heavy",
-    "freezing_drizzle": "freezing_drizzle",
-    "freezing_rain": "freezing_rain",
-    "light_freezing_rain": "freezing_rain_light",
-    "heavy_freezing_rain": "freezing_rain_heavy",
-    "snow": "snow",
-    "light_snow": "snow_light",
-    "heavy_snow": "snow_heavy",
-    "ice_pellets": "ice_pellets",
-    "light_ice_pellets": "ice_pellets_light",
-    "heavy_ice_pellets": "ice_pellets_heavy",
-    "thunderstorm": "thunderstorm",
-    "flurries": "flurries",
-    "hail": "hail",
-    "wind": "wind",
-  };
-  
-  /**
-   * Night icon mappings for Climacell weather conditions
-   */
-  export const climacellNightIcons: { [key: string]: string } = {
-    "clear": "clear_night",
-    "mostly_clear": "mostly_clear_night",
-    "partly_cloudy": "partly_cloudy_night",
-    "mostly_cloudy": "mostly_cloudy",
-    "cloudy": "cloudy",
-    "fog": "fog",
-    "light_fog": "fog_light",
-    "drizzle": "drizzle",
-    "rain": "rain",
-    "light_rain": "rain_light",
-    "heavy_rain": "rain_heavy",
-    "freezing_drizzle": "freezing_drizzle",
-    "freezing_rain": "freezing_rain",
-    "light_freezing_rain": "freezing_rain_light",
-    "heavy_freezing_rain": "freezing_rain_heavy",
-    "snow": "snow",
-    "light_snow": "snow_light",
-    "heavy_snow": "snow_heavy",
-    "ice_pellets": "ice_pellets",
-    "light_ice_pellets": "ice_pellets_light",
-    "heavy_ice_pellets": "ice_pellets_heavy",
-    "thunderstorm": "thunderstorm",
-    "flurries": "flurries",
-    "hail": "hail",
-    "wind": "wind",
-  };
-  
-  /**
-   * Background images for Climacell weather conditions (day)
-   */
-  export const climacellDayBg: { [key: string]: string } = {
-    "clear": "clear-day",
-    "mostly_clear": "mostly-clear-day",
-    "partly_cloudy": "partly-cloudy-day",
-    "mostly_cloudy": "mostly-cloudy",
-    "cloudy": "cloudy",
-    "fog": "fog",
-    "light_fog": "fog-light",
-    "drizzle": "rainy",
-    "rain": "rainy",
-    "light_rain": "rainy-light",
-    "heavy_rain": "rainy-heavy",
-    "freezing_drizzle": "freezing-drizzle",
-    "freezing_rain": "freezing-rain",
-    "light_freezing_rain": "freezing-rain-light",
-    "heavy_freezing_rain": "freezing-rain-heavy",
-    "snow": "snowy",
-    "light_snow": "snowy-light",
-    "heavy_snow": "snowy-heavy",
-    "ice_pellets": "ice-pellets",
-    "light_ice_pellets": "ice-pellets-light",
-    "heavy_ice_pellets": "ice-pellets-heavy",
-    "thunderstorm": "thunderstorm",
-    "flurries": "flurries",
-    "hail": "hail",
-    "wind": "windy",
-  };
+// src/icons/climacell.ts
+
+export const cwcClimacellDayIcons: Record<string, string> = {
+  clear: 'day/clear.svg',
+  cloudy: 'day/cloudy.svg',
+  fog: 'day/fog.svg',
+  hail: 'day/hail.svg',
+  partlycloudy: 'day/partly-cloudy.svg',
+  pouring: 'day/pouring.svg',
+  rainy: 'day/rain.svg',
+  snowy: 'day/snow.svg',
+  snowyrainy: 'day/sleet.svg',
+  sunny: 'day/sunny.svg',
+  windy: 'day/wind.svg',
+  exceptional: 'day/alert.svg',
+};
+
+export const cwcClimacellNightIcons: Record<string, string> = {
+  clear: 'night/clear.svg',
+  cloudy: 'night/cloudy.svg',
+  fog: 'night/fog.svg',
+  hail: 'night/hail.svg',
+  partlycloudy: 'night/partly-cloudy.svg',
+  pouring: 'night/pouring.svg',
+  rainy: 'night/rain.svg',
+  snowy: 'night/snow.svg',
+  snowyrainy: 'night/sleet.svg',
+  sunny: 'night/clear.svg',
+  windy: 'night/wind.svg',
+  exceptional: 'night/alert.svg',
+};
+
+export const cwcClimacellDayBg: Record<string, string> = {
+  clear: 'bg/day/clear.jpg',
+  partlycloudy: 'bg/day/partly-cloudy.jpg',
+  cloudy: 'bg/day/cloudy.jpg',
+  rainy: 'bg/day/rain.jpg',
+  snowy: 'bg/day/snow.jpg',
+};

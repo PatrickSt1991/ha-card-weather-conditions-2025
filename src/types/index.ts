@@ -1,93 +1,47 @@
-import { HassEntity } from "home-assistant-js-websocket";
+// src/types/index.ts
 
-/**
- * Main configuration for the weather card
- */
 export interface CardConfig {
   name?: string;
   language?: string;
-  animation?: boolean;
   display?: string[];
-  weather?: WeatherConfig;
-  air_quality?: AirQualityConfig;
-  pollen?: PollenConfig;
-  uv?: UvConfig;
-  alert?: AlertConfig;
-  sea?: SeaConfig;
+  animation?: boolean;
+  weather?: {
+    current?: WeatherCurrent;
+    forecast?: WeatherForecast;
+    icons_model?: string;
+  };
+  air_quality?: AirQualityEntities;
+  pollen?: PollenEntities;
+  uv?: UvEntities;
+  alert?: string;
+  sea?: string;
   camera?: string;
 }
 
-/**
- * Weather configuration section
- */
-export interface WeatherConfig {
-  current?: CurrentWeatherConfig;
-  forecast?: ForecastConfig;
-  icons_model?: string;
-}
-
-/**
- * Current weather configuration
- */
-export interface CurrentWeatherConfig {
-  sun?: string;
-  current_conditions?: string;
+export interface WeatherCurrent {
   temperature?: string;
-  apparent_temperature?: string;
   humidity?: string;
   pressure?: string;
   visibility?: string;
   wind_bearing?: string;
   wind_speed?: string;
-  forecast?: boolean;
+  sun?: string;
+  current_conditions?: string;
 }
 
-/**
- * Forecast configuration
- */
-export interface ForecastConfig {
+export interface WeatherForecast {
+  temperature_high?: DayValue;
+  temperature_low?: DayValue;
+  precipitation_probability?: DayValue;
+  precipitation_intensity?: DayValue;
   meteogram?: string;
-  temperature_low?: {
-    day_1?: string;
-    day_2?: string;
-    day_3?: string;
-    day_4?: string;
-    day_5?: string;
-  };
-  temperature_high?: {
-    day_1?: string;
-    day_2?: string;
-    day_3?: string;
-    day_4?: string;
-    day_5?: string;
-  };
-  precipitation_intensity?: {
-    day_1?: string;
-    day_2?: string;
-    day_3?: string;
-    day_4?: string;
-    day_5?: string;
-  };
-  precipitation_probability?: {
-    day_1?: string;
-    day_2?: string;
-    day_3?: string;
-    day_4?: string;
-    day_5?: string;
-  };
-  condition?: {
-    day_1?: string;
-    day_2?: string;
-    day_3?: string;
-    day_4?: string;
-    day_5?: string;
-  };
 }
 
-/**
- * Air quality configuration
- */
-export interface AirQualityConfig {
+export interface DayValue {
+  [key: string]: string;
+}
+
+export interface AirQualityEntities {
   co?: string;
   epa_aqi?: string;
   epa_health_concern?: string;
@@ -98,31 +52,13 @@ export interface AirQualityConfig {
   so2?: string;
 }
 
-/**
- * Pollen configuration
- */
-export interface PollenConfig {
-  tree?: PollenTypeConfig;
-  weed?: PollenTypeConfig;
-  grass?: PollenTypeConfig;
+export interface PollenEntities {
+  tree?: { entity: string };
+  weed?: { entity: string };
+  grass?: { entity: string };
 }
 
-/**
- * Configuration for a specific pollen type
- */
-export interface PollenTypeConfig {
-  entity?: string;
-  state_l1?: string;
-  state_l2?: string;
-  state_l3?: string;
-  state_l4?: string;
-  state_l5?: string;
-}
-
-/**
- * UV configuration
- */
-export interface UvConfig {
+export interface UvEntities {
   protection_window?: string;
   ozone_level?: string;
   uv_index?: string;
@@ -130,67 +66,70 @@ export interface UvConfig {
   max_uv_index?: string;
 }
 
-/**
- * Alert configuration
- */
-export interface AlertConfig {
-  entity?: string;
-}
-
-/**
- * Sea forecast configuration
- */
-export interface SeaConfig {
-  condition?: string;
-  wave_height?: string;
-  water_temperature?: string;
-  swell_height?: string;
-  swell_period?: string;
-  primary_swell_wave_direction?: string;
-  secondary_swell_height?: string;
-  secondary_swell_period?: string;
-  secondary_swell_wave_direction?: string;
-  wave_direction?: string;
-}
-
-/**
- * Icons configuration
- */
 export interface IconsConfig {
-  path: string;
-  iconType: string;
+  iconType: 'animated' | 'static';
   icons_model: string;
-  iconsDay: { [key: string]: string };
-  iconsNight: { [key: string]: string };
+  iconsDay: Record<string, string>;
+  iconsNight: Record<string, string>;
+  path: string;
 }
 
-/**
- * Localization terms
- */
 export interface ITerms {
   windDirections: string[];
-  words: { [key: string]: string };
+  words: {
+    humidity: string;
+    pressure: string;
+    visibility: string;
+    wind: string;
+    days: string[];
+    [key: string]: string | string[];
+  };
 }
 
-/**
- * Feature flags interface to track available card features
- */
-export interface FeatureFlags {
-  hasCurrent: boolean;
-  hasForecast: boolean;
-  hasMeteogram: boolean;
-  hasAirQuality: boolean;
-  hasPollen: boolean;
-  hasUv: boolean;
-  hasAlert: boolean;
-  hasSea: boolean;
+// Render data types used by individual components
+export interface AirQualityData {
+  index: number;
+  category: string;
 }
 
-/**
- * Display configuration interface
- */
-export interface DisplayConfig {
-  top: boolean;
-  current: boolean;
-  forecast: boolean;
+export interface AlertData {
+  alerts: { title: string; description: string }[];
+}
+
+export interface ForecastData {
+  daily: {
+    date: string;
+    condition: string;
+    high: number;
+    low: number;
+  }[];
+}
+
+export interface PollenData {
+  tree: string;
+  weed: string;
+  grass: string;
+}
+
+export interface PresentData {
+  temperature: number;
+  condition: string;
+  humidity: number;
+  windSpeed: number;
+}
+
+export interface SeaData {
+  temperature: number;
+  waveHeight: number;
+  wavePeriod: number;
+}
+
+export interface SummaryData {
+  location: string;
+  description: string;
+}
+
+export interface UVData {
+  index: number;
+  riskLevel: string;
 }

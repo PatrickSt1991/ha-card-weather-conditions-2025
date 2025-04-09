@@ -1,134 +1,59 @@
-import { HomeAssistant } from "custom-card-helpers";
-import { HassEntity } from "home-assistant-js-websocket";
+// src/utils/hass.ts
+
+import { HomeAssistant } from 'custom-card-helpers';
 
 /**
- * Gets the state of an entity from Home Assistant
- * @param hass - The Home Assistant instance
- * @param entityId - The entity ID to get the state for
- * @returns The entity state object or undefined if not found
+ * Check if an image exists at a given URL (via HEAD request).
  */
-export function getEntity(hass: HomeAssistant, entityId?: string): HassEntity | undefined {
-  if (!entityId || !hass.states[entityId]) {
-    return undefined;
+export async function imageExist(url: string): Promise<boolean> {
+  try {
+    const res = await fetch(url, { method: 'HEAD' });
+    return res.ok;
+  } catch {
+    return false;
   }
-  return hass.states[entityId];
 }
 
 /**
- * Gets the state value of an entity
- * @param hass - The Home Assistant instance
- * @param entityId - The entity ID to get the state for
- * @param defaultValue - The default value to return if the entity is not found
- * @returns The entity state value or the default value
+ * Load and parse a JSON file from a remote URL.
  */
-export function getEntityStateValue<T>(
-  hass: HomeAssistant,
-  entityId?: string,
-  defaultValue?: T
-): string | T {
-  const entity = getEntity(hass, entityId);
-  if (!entity) {
-    return defaultValue as T;
+export async function loadJSON(url: string): Promise<any | null> {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Bad response: ${res.status}`);
+    return await res.json();
+  } catch (err) {
+    console.error(`[loadJSON] Failed to load from ${url}`, err);
+    return null;
   }
-  return entity.state;
 }
 
 /**
- * Gets a numeric attribute value from an entity
- * @param hass - The Home Assistant instance
- * @param entityId - The entity ID to get the attribute from
- * @param attribute - The name of the attribute
- * @param defaultValue - The default value to return if not found
- * @returns The numeric value of the attribute
+ * Get the state value of an entity safely.
  */
-export function getNumericAttributeValue(
-  hass: HomeAssistant,
-  entityId: string | undefined,
-  attribute: string,
-  defaultValue: number = 0
-): number {
-  if (!entityId) return defaultValue;
-  
-  const entity = getEntity(hass, entityId);
-  if (!entity || !entity.attributes || entity.attributes[attribute] === undefined) {
-    return defaultValue;
-  }
-  
-  const value = parseFloat(entity.attributes[attribute]);
-  return isNaN(value) ? defaultValue : value;
+export function getEntityState(hass: HomeAssistant, entityId: string): string | null {
+  const entity = hass.states[entityId];
+  return entity ? entity.state : null;
 }
 
 /**
- * Gets a string attribute value from an entity
- * @param hass - The Home Assistant instance
- * @param entityId - The entity ID to get the attribute from
- * @param attribute - The name of the attribute
- * @param defaultValue - The default value to return if not found
- * @returns The string value of the attribute
+ * Get the friendly name of an entity (from its attributes).
  */
-export function getStringAttributeValue(
-  hass: HomeAssistant,
-  entityId: string | undefined,
-  attribute: string,
-  defaultValue: string = ""
-): string {
-  if (!entityId) return defaultValue;
-  
-  const entity = getEntity(hass, entityId);
-  if (!entity || !entity.attributes || entity.attributes[attribute] === undefined) {
-    return defaultValue;
-  }
-  
-  return String(entity.attributes[attribute]);
+export function getFriendlyName(hass: HomeAssistant, entityId: string): string {
+  const entity = hass.states[entityId];
+  return entity?.attributes?.friendly_name || entityId;
 }
 
 /**
- * Gets the unit of measurement for an entity
- * @param hass - The Home Assistant instance
- * @param entityId - The entity ID to get the unit for
- * @param defaultUnit - The default unit to return if not found
- * @returns The unit of measurement
+ * Check if an entity exists in hass
  */
-export function getEntityUnit(
-  hass: HomeAssistant,
-  entityId: string | undefined,
-  defaultUnit: string = ""
-): string {
-  return getStringAttributeValue(hass, entityId, "unit_of_measurement", defaultUnit);
+export function entityExists(hass: HomeAssistant, entityId: string): boolean {
+  return Boolean(hass.states[entityId]);
 }
 
 /**
- * Gets the friendly name for an entity
- * @param hass - The Home Assistant instance
- * @param entityId - The entity ID to get the name for
- * @param defaultName - The default name to return if not found
- * @returns The friendly name
+ * Get an attribute of an entity safely
  */
-export function getEntityName(
-  hass: HomeAssistant,
-  entityId: string | undefined,
-  defaultName: string = ""
-): string {
-  return getStringAttributeValue(hass, entityId, "friendly_name", defaultName);
-}
-
-/**
- * Gets the state value of an entity as a number
- * @param hass - The Home Assistant instance
- * @param entityId - The entity ID to get the state for
- * @param defaultValue - The default value to return if the entity is not found or the state is not a number
- * @returns The entity state value as a number or the default value
- */
-export function getEntityStateAsNumber(
-  hass: HomeAssistant,
-  entityId: string | undefined,
-  defaultValue: number = 0
-): number {
-  if (!entityId) return defaultValue;
-  
-  const state = getEntityStateValue(hass, entityId, "");
-  if (state === "") return defaultValue;
-  
-  const value = parseFloat(state as string);
-  return isNaN(value) ? defaultValue : value;
+export function getAttribute(hass: HomeAssistant, entityId: string, attr: string): any {
+  return hass.states[entityId]?.attributes?.[attr];
 }

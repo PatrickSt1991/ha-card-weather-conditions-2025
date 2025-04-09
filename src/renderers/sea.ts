@@ -1,17 +1,29 @@
 // src/renderers/sea.ts
 import { html } from 'lit';
-import { SeaData } from '../types';
+import { HomeAssistant } from 'custom-card-helpers';
+import { CardConfig } from '../types';
 
-export function renderSea(data: SeaData) {
-  if (!data) {
-    return html``;
-  }
+interface SeaRenderOptions {
+  hass: HomeAssistant;
+  config: CardConfig;
+}
+
+export function renderSeaForecast({ hass, config }: SeaRenderOptions) {
+  const entityId = config.sea;
+  if (!entityId) return html``;
+
+  const entity = hass.states[entityId];
+  if (!entity) return html``;
 
   return html`
     <div class="sea">
-      <span class="temperature">Sea Temp: ${data.temperature}°</span>
-      <span class="wave-height">Wave Height: ${data.waveHeight} m</span>
-      <span class="wave-period">Wave Period: ${data.wavePeriod} s</span>
+      <div>🌊 Sea State: ${entity.state}</div>
+      ${entity.attributes.wave_height
+        ? html`<div>Height: ${entity.attributes.wave_height} m</div>`
+        : ''}
+      ${entity.attributes.wave_period
+        ? html`<div>Period: ${entity.attributes.wave_period} s</div>`
+        : ''}
     </div>
   `;
 }

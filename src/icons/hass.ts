@@ -1,41 +1,31 @@
-/**
- * Day icon mappings for default Home Assistant weather conditions
- */
-export const defaultHassDayIcons: { [key: string]: string } = {
-    "clear-night": "clear_night",
-    "cloudy": "cloudy",
-    "exceptional": "exceptional",
-    "fog": "fog",
-    "hail": "hail",
-    "lightning": "lightning",
-    "lightning-rainy": "lightning_rainy",
-    "partlycloudy": "partly_cloudy_day",
-    "pouring": "rain_heavy",
-    "rainy": "rain",
-    "snowy": "snow",
-    "snowy-rainy": "sleet",
-    "sunny": "clear_day",
-    "windy": "wind",
-    "windy-variant": "wind_variant",
-  };
-  
-  /**
-   * Night icon mappings for default Home Assistant weather conditions
-   */
-  export const defaultHassNightIcons: { [key: string]: string } = {
-    "clear-night": "clear_night",
-    "cloudy": "cloudy",
-    "exceptional": "exceptional",
-    "fog": "fog",
-    "hail": "hail",
-    "lightning": "lightning",
-    "lightning-rainy": "lightning_rainy",
-    "partlycloudy": "partly_cloudy_night",
-    "pouring": "rain_heavy",
-    "rainy": "rain",
-    "snowy": "snow",
-    "snowy-rainy": "sleet",
-    "sunny": "clear_day",
-    "windy": "wind",
-    "windy-variant": "wind_variant",
-  };
+// src/icons/hass.ts
+
+export const cwcDefaultHassDayIcons: Record<string, string> = {
+  clear: 'day/clear.svg',
+  cloudy: 'day/cloudy.svg',
+  fog: 'day/fog.svg',
+  hail: 'day/hail.svg',
+  partlycloudy: 'day/partly-cloudy.svg',
+  pouring: 'day/pouring.svg',
+  rainy: 'day/rain.svg',
+  snowy: 'day/snow.svg',
+  snowyrainy: 'day/sleet.svg',
+  sunny: 'day/sunny.svg',
+  windy: 'day/wind.svg',
+  exceptional: 'day/alert.svg',
+};
+
+export const cwcDefaultHassNightIcons: Record<string, string> = {
+  clear: 'night/clear.svg',
+  cloudy: 'night/cloudy.svg',
+  fog: 'night/fog.svg',
+  hail: 'night/hail.svg',
+  partlycloudy: 'night/partly-cloudy.svg',
+  pouring: 'night/pouring.svg',
+  rainy: 'night/rain.svg',
+  snowy: 'night/snow.svg',
+  snowyrainy: 'night/sleet.svg',
+  sunny: 'night/clear.svg',
+  windy: 'night/wind.svg',
+  exceptional: 'night/alert.svg',
+};

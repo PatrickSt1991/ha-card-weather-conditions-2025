@@ -1,47 +1,31 @@
-/**
- * Day icon mappings for OpenWeatherMap weather conditions
- */
-export const openWeatherMapDayIcons: { [key: string]: string } = {
-    "01d": "clear_day",
-    "01n": "clear_night",
-    "02d": "partly_cloudy_day",
-    "02n": "partly_cloudy_night",
-    "03d": "mostly_cloudy",
-    "03n": "mostly_cloudy",
-    "04d": "cloudy",
-    "04n": "cloudy",
-    "09d": "rain_light",
-    "09n": "rain_light",
-    "10d": "rain",
-    "10n": "rain",
-    "11d": "thunderstorm",
-    "11n": "thunderstorm",
-    "13d": "snow",
-    "13n": "snow",
-    "50d": "fog",
-    "50n": "fog",
-  };
-  
-  /**
-   * Night icon mappings for OpenWeatherMap weather conditions
-   */
-  export const openWeatherMapNightIcons: { [key: string]: string } = {
-    "01d": "clear_day",
-    "01n": "clear_night",
-    "02d": "partly_cloudy_day",
-    "02n": "partly_cloudy_night",
-    "03d": "mostly_cloudy",
-    "03n": "mostly_cloudy",
-    "04d": "cloudy",
-    "04n": "cloudy",
-    "09d": "rain_light",
-    "09n": "rain_light",
-    "10d": "rain",
-    "10n": "rain",
-    "11d": "thunderstorm",
-    "11n": "thunderstorm",
-    "13d": "snow",
-    "13n": "snow",
-    "50d": "fog",
-    "50n": "fog",
-  };
+// src/icons/openweathermap.ts
+
+export const cwcOpenWeatherMapDayIcons: Record<string, string> = {
+  clear: 'day/clear.svg',
+  cloudy: 'day/cloudy.svg',
+  fog: 'day/fog.svg',
+  hail: 'day/hail.svg',
+  partlycloudy: 'day/partly-cloudy.svg',
+  pouring: 'day/pouring.svg',
+  rainy: 'day/rain.svg',
+  snowy: 'day/snow.svg',
+  snowyrainy: 'day/sleet.svg',
+  sunny: 'day/sunny.svg',
+  windy: 'day/wind.svg',
+  exceptional: 'day/alert.svg',
+};
+
+export const cwcOpenWeatherMapNightIcons: Record<string, string> = {
+  clear: 'night/clear.svg',
+  cloudy: 'night/cloudy.svg',
+  fog: 'night/fog.svg',
+  hail: 'night/hail.svg',
+  partlycloudy: 'night/partly-cloudy.svg',
+  pouring: 'night/pouring.svg',
+  rainy: 'night/rain.svg',
+  snowy: 'night/snow.svg',
+  snowyrainy: 'night/sleet.svg',
+  sunny: 'night/clear.svg',
+  windy: 'night/wind.svg',
+  exceptional: 'night/alert.svg',
+};

@@ -1,55 +1,31 @@
-/**
- * Day icon mappings for Buienradar weather conditions
- */
-export const buienradarDayIcons: { [key: string]: string } = {
-    "sunny": "clear_day",
-    "clear": "clear_day",
-    "partlycloudy": "partly_cloudy_day",
-    "cloudy": "cloudy",
-    "partlycloudy-fog": "partly_cloudy_day",
-    "light-rain": "rain_light",
-    "partlycloudy-light-rain": "rain_light",
-    "rain": "rain",
-    "rainy": "rain",
-    "partlycloudy-rain": "rain",
-    "snowy": "snow",
-    "snow": "snow",
-    "partlycloudy-snow": "snow",
-    "partlycloudy-light-snow": "snow_light",
-    "light-snow": "snow_light",
-    "cloudy-fog": "fog",
-    "fog": "fog",
-    "thunderstorms": "thunderstorm",
-    "partlycloudy-thunderstorms": "thunderstorm",
-    "thunderstorms-extreme": "thunderstorm",
-    "cloudy-thunderstorms": "thunderstorm",
-    "hail": "hail",
-  };
-  
-  /**
-   * Night icon mappings for Buienradar weather conditions
-   */
-  export const buienradarNightIcons: { [key: string]: string } = {
-    "sunny": "clear_night",
-    "clear": "clear_night",
-    "partlycloudy": "partly_cloudy_night",
-    "cloudy": "cloudy",
-    "partlycloudy-fog": "partly_cloudy_night",
-    "light-rain": "rain_light",
-    "partlycloudy-light-rain": "rain_light",
-    "rain": "rain",
-    "rainy": "rain",
-    "partlycloudy-rain": "rain",
-    "snowy": "snow",
-    "snow": "snow",
-    "partlycloudy-snow": "snow",
-    "partlycloudy-light-snow": "snow_light",
-    "light-snow": "snow_light",
-    "cloudy-fog": "fog",
-    "fog": "fog",
-    "thunderstorms": "thunderstorm",
-    "partlycloudy-thunderstorms": "thunderstorm",
-    "thunderstorms-extreme": "thunderstorm",
-    "cloudy-thunderstorms": "thunderstorm",
-    "hail": "hail",
-  };
+// src/icons/buienradar.ts
+
+export const cwcBuienradarDayIcons: Record<string, string> = {
+  clear: 'day/clear.svg',
+  cloudy: 'day/cloudy.svg',
+  fog: 'day/fog.svg',
+  hail: 'day/hail.svg',
+  partlycloudy: 'day/partly-cloudy.svg',
+  pouring: 'day/pouring.svg',
+  rainy: 'day/rain.svg',
+  snowy: 'day/snow.svg',
+  snowyrainy: 'day/sleet.svg',
+  sunny: 'day/sunny.svg',
+  windy: 'day/wind.svg',
+  exceptional: 'day/alert.svg',
+};
+
+export const cwcBuienradarNightIcons: Record<string, string> = {
+  clear: 'night/clear.svg',
+  cloudy: 'night/cloudy.svg',
+  fog: 'night/fog.svg',
+  hail: 'night/hail.svg',
+  partlycloudy: 'night/partly-cloudy.svg',
+  pouring: 'night/pouring.svg',
+  rainy: 'night/rain.svg',
+  snowy: 'night/snow.svg',
+  snowyrainy: 'night/sleet.svg',
+  sunny: 'night/clear.svg',
+  windy: 'night/wind.svg',
+  exceptional: 'night/alert.svg',
+};
