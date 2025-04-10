@@ -226,7 +226,7 @@ class b extends HTMLElement {
     try {
       t = this.shouldUpdate(e), t ? (this.willUpdate(e), this._$EO?.forEach((s) => s.hostUpdate?.()), this.update(e)) : this._$EU();
     } catch (s) {
-      throw t = !1, this._$EU(), s;
+      throw this._$EU(), s;
     }
     t && this._$AE(e);
   }
