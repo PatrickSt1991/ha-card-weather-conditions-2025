@@ -1,4 +1,4 @@
-import { PATHS } from '../constants/paths';
+import { PATHS } from '../constants/path';
 
 /**
  * Checks if a file exists at the specified URL
@@ -49,17 +49,24 @@ export async function determineImagePath(customPath?: string): Promise<string | 
 }
 
 /**
- * Setup image path synchronously - returns a default path that will be updated
+ * Sets up image path with validation callback
  * @param customPath - Optional custom path
- * @returns Initial image path string or null
+ * @param callback - Function to handle validation result
+ * @returns Initial path string
  */
-export function setupImagePath(customPath?: string): string | null {
-  const path = customPath || PATHS.HACS_IMAGE_PATH;
+export function setupImagePath(
+  customPath?: string | null,
+  callback?: (validatedPath: string | null) => void
+): string | null {
+  const initialPath = customPath || PATHS?.HACS_IMAGE_PATH || null;
   
-  // Start the async validation process but don't wait for it
-  determineImagePath(customPath).then(validatedPath => {
-    // This will be handled by the component that receives the result
-  });
+  if (customPath) {
+    determineImagePath(customPath)
+      .then(validated => callback?.(validated))
+      .catch(() => callback?.(null));
+  } else if (callback) {
+    callback(initialPath);
+  }
   
-  return path;
+  return initialPath;
 }

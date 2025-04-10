@@ -9,7 +9,7 @@ interface AirQualityRenderOptions {
   terms: ITerms;
 }
 
-export function renderAirQualities({ hass, config, terms }: AirQualityRenderOptions) {
+export function renderAirQualities({ hass, config }: AirQualityRenderOptions) {
   const aqi = config.air_quality;
   if (!aqi) return html``;
 

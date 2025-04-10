@@ -1,6 +1,5 @@
 import { ITerms } from '../types';
-import { PATHS } from 'constants/path';
-
+import { PATHS } from '../constants/path';
 /**
  * Loads a JSON file from a URL
  */

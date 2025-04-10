@@ -9,7 +9,7 @@ interface PollenRenderOptions {
   terms: ITerms;
 }
 
-export function renderPollens({ hass, config, terms }: PollenRenderOptions) {
+export function renderPollens({ hass, config }: PollenRenderOptions) {
   const pollen = config.pollen;
   if (!pollen) return html``;
 

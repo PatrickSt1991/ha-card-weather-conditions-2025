@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
-    "target": "es2022",
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "lib": ["es2022", "dom", "dom.iterable"],
+    "baseUrl": "./src",
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "lib": ["ES2022", "dom"],
     "strict": true,
     "noEmit": false,
     "declaration": true,
@@ -26,6 +26,6 @@
     "isolatedModules": true,
     "types": []
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

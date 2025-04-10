@@ -21,23 +21,23 @@
   "author": "PatrickSt1991",
   "license": "MIT",
   "dependencies": {
-    "lit": "^3.0.0",
     "@lit-labs/motion": "^1.0.0",
-    "custom-card-helpers": "^1.12.0",
-    "home-assistant-js-websocket": "^8.0.0"
+    "custom-card-helpers": "^1.9.0",
+    "home-assistant-js-websocket": "^8.0.0",
+    "lit": "^3.2.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.3.1",
     "@typescript-eslint/parser": "^7.3.1",
-    "esbuild": "^0.20.2",
+    "@vitejs/plugin-legacy": "^6.0.2",
+    "esbuild": "^0.25.2",
     "eslint": "^8.56.0",
-    "eslint-config-airbnb-base": "^16.1.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
     "prettier": "^3.2.4",
-    "typescript": "^5.3.3",
-    "vite": "^5.1.4",
-    "@vitejs/plugin-legacy": "^5.0.4"
+    "typescript": "^5.8.3",
+    "vite": "^6.2.6"
   },
   "bugs": {
     "url": "https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/issues"

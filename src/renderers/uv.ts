@@ -9,7 +9,7 @@ interface UVRenderOptions {
   terms: ITerms;
 }
 
-export function renderUv({ hass, config, terms }: UVRenderOptions) {
+export function renderUv({ hass, config }: UVRenderOptions) {
   const uv = config.uv;
   if (!uv) return html``;
 
