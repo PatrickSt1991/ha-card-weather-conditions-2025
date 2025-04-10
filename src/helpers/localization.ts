@@ -78,13 +78,21 @@ export async function getTranslations(imagePath: string, locale: string): Promis
 /**
  * Determine image path (can be overridden via custom path in config).
  */
-export function setupImagePaths(customPath?: string): string | null {
+/**
+ * Determine image path (can be overridden via custom path in config).
+ * Falls back to local ./icons for bundled usage.
+ */
+export function setupImagePaths(customPath?: string): string {
   if (customPath) return customPath;
+
+  // Vite bundles this — we default to local relative folder
+  if (import.meta.env?.DEV === false) {
+    return './icons';
+  }
 
   const script = document.currentScript as HTMLScriptElement | null;
   const basePath = script?.src ? script.src.substring(0, script.src.lastIndexOf('/')) : '';
 
-  // Try to infer path relative to Lovelace or HACS install
   if (basePath.includes('/community_plugin/')) {
     return '/hacsfiles/ha-card-weather-conditions';
   }
@@ -93,5 +101,6 @@ export function setupImagePaths(customPath?: string): string | null {
     return '/local/ha-card-weather-conditions';
   }
 
-  return '/hacsfiles/ha-card-weather-conditions'; // fallback
+  return './icons'; // Fallback for dist build
 }
+

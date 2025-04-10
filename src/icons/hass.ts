@@ -1,31 +1,16 @@
 // src/icons/hass.ts
 
-export const cwcDefaultHassDayIcons: Record<string, string> = {
-  clear: 'day/clear.svg',
-  cloudy: 'day/cloudy.svg',
-  fog: 'day/fog.svg',
-  hail: 'day/hail.svg',
-  partlycloudy: 'day/partly-cloudy.svg',
-  pouring: 'day/pouring.svg',
-  rainy: 'day/rain.svg',
-  snowy: 'day/snow.svg',
-  snowyrainy: 'day/sleet.svg',
-  sunny: 'day/sunny.svg',
-  windy: 'day/wind.svg',
-  exceptional: 'day/alert.svg',
-};
-
-export const cwcDefaultHassNightIcons: Record<string, string> = {
-  clear: 'night/clear.svg',
-  cloudy: 'night/cloudy.svg',
-  fog: 'night/fog.svg',
-  hail: 'night/hail.svg',
-  partlycloudy: 'night/partly-cloudy.svg',
-  pouring: 'night/pouring.svg',
-  rainy: 'night/rain.svg',
-  snowy: 'night/snow.svg',
-  snowyrainy: 'night/sleet.svg',
-  sunny: 'night/clear.svg',
-  windy: 'night/wind.svg',
-  exceptional: 'night/alert.svg',
+export const defaultHassIcons: Record<string, string> = {
+  clear: 'weather/clear.svg',
+  cloudy: 'weather/cloudy.svg',
+  fog: 'weather/fog.svg',
+  hail: 'weather/hail.svg',
+  partlycloudy: 'weather/partly-cloudy.svg',
+  pouring: 'weather/pouring.svg',
+  rainy: 'weather/rain.svg',
+  snowy: 'weather/snow.svg',
+  snowyrainy: 'weather/sleet.svg',
+  sunny: 'weather/sunny.svg',
+  windy: 'weather/wind.svg',
+  exceptional: 'weather/alert.svg',
 };

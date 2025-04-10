@@ -1,15 +1,10 @@
 // helpers/iconConfig.ts
 import {
-  cwcClimacellDayIcons,
-  cwcClimacellNightIcons,
-  cwcDarkskyDayIcons,
-  cwcDarkskyNightIcons,
-  cwcOpenWeatherMapDayIcons,
-  cwcOpenWeatherMapNightIcons,
-  cwcBuienradarDayIcons,
-  cwcBuienradarNightIcons,
-  cwcDefaultHassDayIcons,
-  cwcDefaultHassNightIcons,
+   climacellIcons,
+  darkskyIcons,
+  openWeatherMapIcons,
+  buienradarIcons,
+  defaultHassIcons,
 } from '../icons';
 
 import { CardConfig, IconsConfig } from '../types';
@@ -20,8 +15,8 @@ export function getIconConfig(config: CardConfig, path: string): IconsConfig {
   const defaultConfig: IconsConfig = {
       iconType: config.animation ? 'animated' : 'static',
       icons_model: 'climacell',
-      iconsDay: cwcClimacellDayIcons,
-      iconsNight: cwcClimacellNightIcons,
+      iconsDay: climacellIcons,
+      iconsNight: climacellIcons,
       path,
   };
 
@@ -30,29 +25,29 @@ export function getIconConfig(config: CardConfig, path: string): IconsConfig {
           return {
               ...defaultConfig,
               icons_model: 'darksky',
-              iconsDay: cwcDarkskyDayIcons,
-              iconsNight: cwcDarkskyNightIcons,
+              iconsDay: darkskyIcons,
+              iconsNight: darkskyIcons,
           };
       case 'openweathermap':
           return {
               ...defaultConfig,
               icons_model: 'openweathermap',
-              iconsDay: cwcOpenWeatherMapDayIcons,
-              iconsNight: cwcOpenWeatherMapNightIcons,
+              iconsDay: openWeatherMapIcons,
+              iconsNight: openWeatherMapIcons,
           };
       case 'buienradar':
           return {
               ...defaultConfig,
               icons_model: 'buienradar',
-              iconsDay: cwcBuienradarDayIcons,
-              iconsNight: cwcBuienradarNightIcons,
+              iconsDay: buienradarIcons,
+              iconsNight: buienradarIcons,
           };
       case 'defaulthass':
           return {
               ...defaultConfig,
               icons_model: 'defaulthass',
-              iconsDay: cwcDefaultHassDayIcons,
-              iconsNight: cwcDefaultHassNightIcons,
+              iconsDay: defaultHassIcons,
+              iconsNight: defaultHassIcons,
           };
       default:
           return defaultConfig;
