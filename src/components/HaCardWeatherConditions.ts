@@ -1,22 +1,34 @@
-// src/HaCardWeatherConditions.ts
-import { LitElement, html, css } from 'lit';
+// src/components/HaCardWeatherConditions.ts
+import { LitElement, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import { HomeAssistant } from 'custom-card-helpers';
 
-import { initializeConfig } from './helpers/config';
-import { setupImagePaths } from './helpers/localization';
-import { styles } from './styles';
-import { CardConfig, IconsConfig, ITerms } from './types';
-import { FeatureFlags } from './helpers/featureFlags';
+import { initializeConfig } from '../helpers/config';
+import { setupImagePaths } from '../helpers/localization';
+
+import { styles } from '../styles';
+import { CardConfig, IconsConfig, ITerms } from '../types';
+import { FeatureFlags } from '../helpers/featureFlags';
+import { buildForecastData } from '../helpers/forecastBuilder';
+
+// Renderers
+import { renderSummary } from '../renderers/summary';
+import { renderPresent } from '../renderers/present';
+import { renderForecasts } from '../renderers/forecast';
+import { renderPollens } from '../renderers/pollen';
+import { renderAirQualities } from '../renderers/airQuality';
+import { renderUv } from '../renderers/uv';
+import { renderAlert } from '../renderers/alert';
+import { renderSeaForecast } from '../renderers/sea';
 
 @customElement('ha-card-weather-conditions')
 export class HaCardWeatherConditions extends LitElement {
   @property({ attribute: false }) public hass?: HomeAssistant;
+
   @state() private config?: CardConfig;
   @state() private iconConfig?: IconsConfig;
   @state() private flags?: FeatureFlags;
   @state() private terms?: ITerms;
-  @state() private imagePath: string | null = null;
   @state() private invalidConfig = false;
 
   static styles = styles;
@@ -30,7 +42,6 @@ export class HaCardWeatherConditions extends LitElement {
       this.iconConfig = iconConfig;
       this.flags = flags;
       this.terms = terms;
-      this.imagePath = imagePath;
     } catch (err) {
       console.error('Error in setConfig:', err);
       this.invalidConfig = true;
@@ -38,11 +49,23 @@ export class HaCardWeatherConditions extends LitElement {
   }
 
   public getCardSize(): number {
-    return 1;
+    return 2;
   }
 
   protected render() {
-    if (this.invalidConfig || !this.config || !this.hass) {
+    const { hass, config, iconConfig, terms, flags } = this;
+
+    // Show a more helpful loading state before configuration is ready
+    if (!hass || !config || !iconConfig || !terms || !flags) {
+      return html`
+        <ha-card class="ha-card-weather-conditions">
+          <div class="content">Loading weather card...</div>
+        </ha-card>
+      `;
+    }
+
+    // Fallback for invalid configuration
+    if (this.invalidConfig) {
       return html`
         <ha-card class="ha-card-weather-conditions">
           <div class="banner">
@@ -53,13 +76,19 @@ export class HaCardWeatherConditions extends LitElement {
       `;
     }
 
+    const options = { hass, config, terms, icons: iconConfig };
+
     return html`
       <ha-card class="ha-card-weather-conditions">
         <div class="nd-container">
-          <!-- RENDER LOGIC START -->
-          <!-- Example: -->
-          <!-- ${this.flags?.hasCurrent ? renderSummary({...}) : ''} -->
-          <!-- Add more renderers here using flags and data -->
+          ${flags.hasCurrent ? renderSummary(options) : ''}
+          ${flags.hasCurrent ? renderPresent(options) : ''}
+          ${flags.hasForecast ? renderForecasts(buildForecastData(hass, config)) : ''}
+          ${flags.hasAlert ? renderAlert({ hass, config }) : ''}
+          ${flags.hasAirQuality ? renderAirQualities(options) : ''}
+          ${flags.hasPollen ? renderPollens(options) : ''}
+          ${flags.hasUv ? renderUv(options) : ''}
+          ${flags.hasSea ? renderSeaForecast({ hass, config }) : ''}
         </div>
       </ha-card>
     `;

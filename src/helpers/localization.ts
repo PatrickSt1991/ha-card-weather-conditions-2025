@@ -75,3 +75,24 @@ export async function getTranslations(imagePath: string, locale: string): Promis
   const translations = await loadTranslations(imagePath);
   return getTranslationTerms(locale, LOCALE_INDICES, translations);
 }
+
+/**
+ * Determine image path (can be overridden via custom path in config).
+ */
+export function setupImagePaths(customPath?: string): string | null {
+  if (customPath) return customPath;
+
+  const script = document.currentScript as HTMLScriptElement | null;
+  const basePath = script?.src ? script.src.substring(0, script.src.lastIndexOf('/')) : '';
+
+  // Try to infer path relative to Lovelace or HACS install
+  if (basePath.includes('/community_plugin/')) {
+    return '/hacsfiles/ha-card-weather-conditions';
+  }
+
+  if (basePath.includes('/local/')) {
+    return '/local/ha-card-weather-conditions';
+  }
+
+  return '/hacsfiles/ha-card-weather-conditions'; // fallback
+}

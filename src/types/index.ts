@@ -34,6 +34,7 @@ export interface WeatherForecast {
   temperature_low?: DayValue;
   precipitation_probability?: DayValue;
   precipitation_intensity?: DayValue;
+  condition?: DayValue;
   meteogram?: string;
 }
 
