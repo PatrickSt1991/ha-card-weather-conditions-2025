@@ -29,10 +29,10 @@ export const LOCALE_MAP: { [key: string]: number } = {
     'es.json',
     'de.json',
     'fr.json',
-    'sr-latn.json',
+    'sr.json',
     'pt.json',
     'da.json',
-    'no-NO.json'
+    'no.json'
   ];
   
   /**

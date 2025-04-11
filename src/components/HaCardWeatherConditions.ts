@@ -35,7 +35,8 @@ export class HaCardWeatherConditions extends LitElement {
 
   public async setConfig(config: CardConfig): Promise<void> {
     try {
-      const imagePath = setupImagePaths();
+      const imagePath = await setupImagePaths();
+      console.log()
       const { config: normalized, iconConfig, flags, terms } = await initializeConfig(config, imagePath || '');
 
       this.config = normalized;
@@ -56,6 +57,12 @@ export class HaCardWeatherConditions extends LitElement {
     const { hass, config, iconConfig, terms, flags } = this;
 
     // Show a more helpful loading state before configuration is ready
+    console.log('Rendering card...');
+    console.log('Hass:', hass);
+    console.log('Config:', config); //Undefined
+    console.log('Icon Config:', iconConfig); //Undefined
+    console.log('Terms:', terms); //Undefined
+    console.log('Flags:', flags); //Undefined
     if (!hass || !config || !iconConfig || !terms || !flags) {
       return html`
         <ha-card class="ha-card-weather-conditions">
