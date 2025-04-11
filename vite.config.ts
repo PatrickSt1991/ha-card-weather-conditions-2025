@@ -25,6 +25,10 @@ export default defineConfig({
           src: 'src/assets/icons',
           dest: '.', // Copies to dist/icons
         },
+        {
+          src: 'src/assets/transl',
+          dest: '.', // => dist/transl/
+        },
       ],
     }),
   ],

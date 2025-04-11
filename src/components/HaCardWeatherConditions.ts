@@ -35,24 +35,33 @@ export class HaCardWeatherConditions extends LitElement {
 
   public async setConfig(config: CardConfig): Promise<void> {
     try {
+      // Get image path based on setup
       const imagePath = setupImagePaths();
+      
+      // Initialize configuration, iconConfig, flags, and terms
       const { config: normalized, iconConfig, flags, terms } = await initializeConfig(config, imagePath || '');
 
+      // Update the state with the values
       this.config = normalized;
       this.iconConfig = iconConfig;
       this.flags = flags;
       this.terms = terms;
+
+      // Trigger a re-render once the configuration is updated
+      this.requestUpdate();
     } catch (err) {
       console.error('Error in setConfig:', err);
       this.invalidConfig = true;
+      this.requestUpdate(); // Trigger a re-render even on error
     }
   }
 
   public getCardSize(): number {
-    return 2;
+    return 2; // Card size
   }
 
   protected render() {
+    // Destructure state values
     const { hass, config, iconConfig, terms, flags } = this;
 
     // Show a more helpful loading state before configuration is ready
@@ -76,8 +85,10 @@ export class HaCardWeatherConditions extends LitElement {
       `;
     }
 
+    // Options passed to renderers
     const options = { hass, config, terms, icons: iconConfig };
 
+    // Main render layout
     return html`
       <ha-card class="ha-card-weather-conditions">
         <div class="nd-container">

@@ -1,13 +1,13 @@
 // Define static paths for the card resources
 export const PATHS = {
     // HACS installation path
-    HACS_IMAGE_PATH: '/local/community/ha-card-weather-conditions/icons',
+    HACS_IMAGE_PATH: '/local/community/ha-card-weather-conditions',
     // Manual installation path
-    MANUAL_IMAGE_PATH: '/local/ha-card-weather-conditions/icons',
+    MANUAL_IMAGE_PATH: '/local/ha-card-weather-conditions',
     // Default test file to check path existence
     TEST_FILE: '/static/cloudy.svg',
     // Translations folder relative to image path
-    TRANSLATIONS_DIR: '/../transl/'
+    TRANSLATIONS_DIR: '/transl/'
   };
   
   // Card metadata
