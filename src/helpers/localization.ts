@@ -1,106 +1,90 @@
-import { ITerms } from '../types';
-import { PATHS } from '../constants/path';
 /**
- * Loads a JSON file from a URL
+ * Map of language codes to array indices for translation files
  */
-export async function loadJSON(url: string): Promise<any> {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`Failed to load JSON from ${url}: ${response.statusText}`);
-    return await response.json();
-  } catch (error) {
-    console.error(`Error loading JSON from ${url}:`, error);
-    return null;
-  }
-}
-
-export const LOCALE_INDICES: Record<string, number> = {
-  'en': 0, 'it': 1, 'nl': 2, 'es': 3, 'de': 4,
-  'fr': 5, 'sr-latn': 6, 'pt': 7, 'da': 8, 'no-no': 9
+export const LOCALE_MAP: Record<string, number> = {
+  en: 0,
+  it: 1,
+  nl: 2,
+  es: 3,
+  de: 4,
+  fr: 5,
+  sr: 6,
+  pt: 7,
+  da: 8,
+  no: 9,
 };
 
-export function getLocale(locale?: string): string {
-  return locale?.toLowerCase() || 'en';
-}
-
-export function getTranslationTerms(
-  locale: string,
-  localeMap: Record<string, number>,
-  translations?: any[]
-): ITerms {
-  const fallbackTerms: ITerms = {
-    windDirections: [
-      'N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE',
-      'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW', 'N'
-    ],
-    words: {
-      humidity: 'Humidity',
-      pressure: 'Pressure',
-      visibility: 'Visibility',
-      wind: 'Wind',
-      days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-    },
-  };
-
-  if (!translations) return fallbackTerms;
-
-  try {
-    const normalizedLocale = locale.toLowerCase();
-    const index = localeMap[normalizedLocale] ?? 0;
-    const translationData = translations[index];
-
-    return {
-      windDirections: translationData?.cwcLocWindDirections || fallbackTerms.windDirections,
-      words: translationData?.cwcTerms || fallbackTerms.words,
-    };
-  } catch (e) {
-    console.error(`Error processing translations for ${locale}:`, e);
-    return fallbackTerms;
-  }
-}
-
-export async function loadTranslations(imagePath: string): Promise<any[]> {
-  const translPath = imagePath + PATHS.TRANSLATIONS_DIR;
-
-  const files = [
-    'en.json', 'it.json', 'nl.json', 'es.json', 'de.json',
-    'fr.json', 'sr-latn.json', 'pt.json', 'da.json', 'no-NO.json',
-  ];
-
-  return Promise.all(files.map(file => loadJSON(`${translPath}${file}`)));
-}
-
-export async function getTranslations(imagePath: string, locale: string): Promise<ITerms> {
-  const translations = await loadTranslations(imagePath);
-  return getTranslationTerms(locale, LOCALE_INDICES, translations);
-}
+/**
+ * Default locale to use if the requested one is not found
+ */
+export const DEFAULT_LOCALE = 'en';
 
 /**
- * Determine image path (can be overridden via custom path in config).
+ * Translation file names, ordered to match LOCALE_MAP
  */
+export const TRANSLATION_FILES = [
+  'en.json',
+  'it.json',
+  'nl.json',
+  'es.json',
+  'de.json',
+  'fr.json',
+  'sr.json',
+  'pt.json',
+  'da.json',
+  'no.json',
+];
+
 /**
- * Determine image path (can be overridden via custom path in config).
- * Falls back to local ./icons for bundled usage.
+ * Default wind directions for fallback translations
  */
-export function setupImagePaths(customPath?: string): string {
-  if (customPath) return customPath;
+export const DEFAULT_WIND_DIRECTIONS: string[] = [
+  'N', 'NNE', 'NE', 'ENE',
+  'E', 'ESE', 'SE', 'SSE',
+  'S', 'SSW', 'SW', 'WSW',
+  'W', 'WNW', 'NW', 'NNW', 'N'
+];
 
-  // Vite bundles this — we default to local relative folder
-  if (import.meta.env?.DEV === false) {
-    return './icons';
-  }
-
-  const script = document.currentScript as HTMLScriptElement | null;
-  const basePath = script?.src ? script.src.substring(0, script.src.lastIndexOf('/')) : '';
-
-  if (basePath.includes('/community_plugin/')) {
-    return '/hacsfiles/ha-card-weather-conditions';
-  }
-
-  if (basePath.includes('/local/')) {
-    return '/local/ha-card-weather-conditions';
-  }
-
-  return './icons'; // Fallback for dist build
-}
-
+/**
+ * Default fallback translation terms (used when JSON is missing or invalid)
+ */
+export const DEFAULT_TERMS: Record<string, string> = {
+  cwc_trans_day: 'Day',
+  cwc_trans_night: 'Night',
+  cwc_trans_humidity: 'Humidity',
+  cwc_trans_pressure: 'Pressure',
+  cwc_trans_visibility: 'Visibility',
+  cwc_trans_wind: 'Wind',
+  cwc_trans_precipitation: 'Precipitation',
+  cwc_trans_precipitation_probability: 'Precipitation Probability',
+  cwc_trans_daily_forecast: 'Daily Forecast',
+  cwc_trans_hourly_forecast: 'Hourly Forecast',
+  cwc_trans_feels_like: 'Feels Like',
+  cwc_trans_alerts: 'Alerts',
+  cwc_trans_no_alerts: 'No alerts',
+  cwc_trans_uv: 'UV Index',
+  cwc_trans_uv_protection: 'UV Protection',
+  cwc_trans_ozone_level: 'Ozone Level',
+  cwc_trans_pollen: 'Pollen',
+  cwc_trans_tree: 'Tree',
+  cwc_trans_grass: 'Grass',
+  cwc_trans_weed: 'Weed',
+  cwc_trans_air_quality: 'Air Quality',
+  cwc_trans_co: 'CO',
+  cwc_trans_no2: 'NO₂',
+  cwc_trans_o3: 'O₃',
+  cwc_trans_so2: 'SO₂',
+  cwc_trans_pm10: 'PM₁₀',
+  cwc_trans_pm25: 'PM₂.₅',
+  cwc_trans_epa_aqi: 'EPA AQI',
+  cwc_trans_epa_health: 'Health Concern',
+  cwc_trans_sun: 'Sun',
+  cwc_trans_sunrise: 'Sunrise',
+  cwc_trans_sunset: 'Sunset',
+  cwc_trans_high: 'High',
+  cwc_trans_low: 'Low',
+  cwc_trans_sea: 'Sea',
+  cwc_trans_waves: 'Waves',
+  cwc_trans_swell: 'Swell',
+  cwc_trans_water_temp: 'Water Temperature'
+};

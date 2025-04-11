@@ -677,7 +677,7 @@ function Wt(i, t) {
 }
 const Bt = {
   // Translations folder relative to image path
-  TRANSLATIONS_DIR: "/../transl/"
+  TRANSLATIONS_DIR: "/transl/"
 };
 async function Ft(i) {
   try {
@@ -745,16 +745,18 @@ function Jt(i, t, e) {
 }
 async function Qt(i) {
   const t = i + Bt.TRANSLATIONS_DIR, e = [
+    "cs.json",
+    "da.json",
+    "de.json",
     "en.json",
+    "es.json",
+    "fr.json",
     "it.json",
     "nl.json",
-    "es.json",
-    "de.json",
-    "fr.json",
-    "sr-latn.json",
+    "nn.json",
     "pt.json",
-    "da.json",
-    "no-NO.json"
+    "ru.json",
+    "sr.json"
   ];
   return Promise.all(e.map((s) => Ft(`${t}${s}`)));
 }
@@ -763,7 +765,7 @@ async function Kt(i, t) {
   return Jt(t, Vt, e);
 }
 function Zt(i) {
-  return "./icons";
+  return ".";
 }
 function Gt(i) {
   if (!i)
