@@ -1,8 +1,6 @@
 {
-  "name": "Weather Conditions Card 2025",
-  "render_readme": true,
+  "name": "Weather Conditions 2025 Card",
   "filename": "dist/ha-card-weather-conditions.js",
-  "frontend": true,
   "country": "worldwide",
   "homeassistant": "2024.3.3"
 }
