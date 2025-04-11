@@ -1,16 +1,16 @@
 // src/icons/darksky.ts
 
 export const darkskyIcons: Record<string, string> = {
-  clear: 'weather/clear.svg',
-  cloudy: 'weather/cloudy.svg',
-  fog: 'weather/fog.svg',
-  hail: 'weather/hail.svg',
-  partlycloudy: 'weather/partly-cloudy.svg',
-  pouring: 'weather/pouring.svg',
-  rainy: 'weather/rain.svg',
-  snowy: 'weather/snow.svg',
-  snowyrainy: 'weather/sleet.svg',
-  sunny: 'weather/sunny.svg',
-  windy: 'weather/wind.svg',
-  exceptional: 'weather/alert.svg',
+  clear: 'icons/weather/clear.svg',
+  cloudy: 'icons/weather/cloudy.svg',
+  fog: 'icons/weather/fog.svg',
+  hail: 'icons/weather/hail.svg',
+  partlycloudy: 'icons/weather/partly-cloudy.svg',
+  pouring: 'icons/weather/pouring.svg',
+  rainy: 'icons/weather/rain.svg',
+  snowy: 'icons/weather/snow.svg',
+  snowyrainy: 'icons/weather/sleet.svg',
+  sunny: 'icons/weather/sunny.svg',
+  windy: 'icons/weather/wind.svg',
+  exceptional: 'icons/weather/alert.svg',
 };

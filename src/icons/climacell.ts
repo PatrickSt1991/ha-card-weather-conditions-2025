@@ -1,23 +1,23 @@
 // src/icons/climacell.ts
 
 export const climacellIcons: Record<string, string> = {
-  clear: 'weather/clear.svg',
-  cloudy: 'weather/cloudy.svg',
-  fog: 'weather/fog.svg',
-  hail: 'weather/hail.svg',
-  partlycloudy: 'weather/partly-cloudy.svg',
-  pouring: 'weather/pouring.svg',
-  rainy: 'weather/rain.svg',
-  snowy: 'weather/snow.svg',
-  snowyrainy: 'weather/sleet.svg',
-  sunny: 'weather/sunny.svg',
-  windy: 'weather/wind.svg',
-  exceptional: 'weather/alert.svg',
+  clear: 'icons/weather/clear.svg',
+  cloudy: 'icons/weather/cloudy.svg',
+  fog: 'icons/weather/fog.svg',
+  hail: 'icons/weather/hail.svg',
+  partlycloudy: 'icons/weather/partly-cloudy.svg',
+  pouring: 'icons/weather/pouring.svg',
+  rainy: 'icons/weather/rain.svg',
+  snowy: 'icons/weather/snow.svg',
+  snowyrainy: 'icons/weather/sleet.svg',
+  sunny: 'icons/weather/sunny.svg',
+  windy: 'icons/weather/wind.svg',
+  exceptional: 'icons/weather/alert.svg',
 };
 
 export const cwcClimacellDayBg: Record<string, string> = {
-  clear: 'bg/day-clear.jpg',
-  partlycloudy: 'bg/day-cloud-1.jpg',
-  cloudy: 'bg/day-cloud-2.jpg',
-  rainy: 'bg/day-cloud-3.jpg',
+  clear: 'icons/bg/day-clear.jpg',
+  partlycloudy: 'icons/bg/day-cloud-1.jpg',
+  cloudy: 'icons/bg/day-cloud-2.jpg',
+  rainy: 'icons/bg/day-cloud-3.jpg',
 };
