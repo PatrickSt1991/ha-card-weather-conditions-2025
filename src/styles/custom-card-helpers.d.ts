@@ -7,3 +7,18 @@ declare module 'custom-card-helpers' {
     }
   }
   
+declare module '*.svg?raw' {
+  const content: string;
+  export default content;
+}
+
+declare module '*.json?raw' {
+  const content: string;
+  export default content;
+}
+
+// For JPG files (to treat them as URLs)
+declare module '*.jpg' {
+  const content: string; // This treats JPG as a URL (string path)
+  export default content;
+}
