@@ -1,8 +1,6 @@
 # Weather Conditions Card
 
-|          |          |          |          |
-|----------|----------|----------|----------|
-| [![hacs_badge](https://img.shields.io/badge/HACS-Default-blue.svg)](https://github.com/hacs/integration) | [![License][license-shield]](LICENSE) | ![Language grade: JavaScript](https://shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=flat-square) | ![Support Ukraine](https://img.shields.io/badge/Support-Ukraine-FFD500?style=flat&labelColor=005BBB) |
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-blue.svg)](https://github.com/hacs/integration)  [![License][license-shield]](LICENSE)  ![Language grade: JavaScript](https://shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=flat-square)  ![Support Ukraine](https://img.shields.io/badge/Support-Ukraine-FFD500?style=flat&labelColor=005BBB) 
 
 ## Features
 
@@ -23,9 +21,9 @@
 ## Screenshots 📸  
 
 <div align="center">
-  <img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-full.png" width="30%" alt="Full Weather Card">
-  <img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-1.png" width="30%" alt="Weather Card Example">
-  <img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-2.png" width="30%" alt="Weather Card Alternate Example">
+  <img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/main/md.images/ha-card-weather-condition-full.png" width="30%" alt="Full Weather Card">
+  <img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/main/md.images/ha-card-weather-condition-1.png" width="30%" alt="Weather Card Example">
+  <img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/main/md.images/ha-card-weather-condition-2.png" width="30%" alt="Weather Card Alternate Example">
 </div>
 
 ## **Terms of use**
@@ -48,7 +46,7 @@ Just search for ha-card-weather-conditions-2025 in frontend plugins tab.
 ## Manual
 If you configure Lovelace via YAML, add a reference to `ha-card-weather-conditions.js` inside your configuration.yaml:
 
-1. Download vacuum-card.js file from the [latest-release](https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/releases/latest).
+1. Download `ha-card-weather-conditions.js` file from the [latest-release](https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/releases/latest).
 
 2. Put `ha-card-weather-conditions.js` file into your config/www folder.
 
@@ -129,7 +127,7 @@ The following parameters and card configurations are used to display the current
 
 #### **Display the *Summary Layer*** 
 
-<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-summary.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/main/md.images/ha-card-weather-condition-summary.png" width="40%" height="auto" alt="Home Assistant lovelace card">
 
 ##### *Summary Layer*, example of card setup
 ```yaml
@@ -150,8 +148,8 @@ The following parameters and card configurations are used to display the current
 #### **Display the *Current Layer*** 
 
 <p float="left">
-<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-current.png" width="40%" height="auto" alt="Home Assistant lovelace card">
-<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-current-ext.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/main/md.images/ha-card-weather-condition-current.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/main/md.images/ha-card-weather-condition-current-ext.png" width="40%" height="auto" alt="Home Assistant lovelace card">
 </p>
 
 ##### *Current Layer*, example of card setup
@@ -185,7 +183,7 @@ The following parameters and card configurations are used to display the current
 
 #### **Display the *Summary & Current Layer*** 
 
-<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-summary+current.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/main/md.images/ha-card-weather-condition-summary+current.png" width="40%" height="auto" alt="Home Assistant lovelace card">
 
 ##### *Summary & Current Layer*, example of card setup
 
@@ -246,7 +244,7 @@ The following parameters and card configurations are used to display the current
 
 #### **Display the *Forecast Layer*** 
 
-<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-forecast.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/main/md.images/ha-card-weather-condition-forecast.png" width="40%" height="auto" alt="Home Assistant lovelace card">
 
 ##### *Forecast Layer*, example of card setup
 
@@ -328,7 +326,7 @@ To capitalize the name of the days of the week use `style` directive:
 
 #### **Display the *Sea Forecast Layer*** 
 
-<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-sea.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/main/md.images/ha-card-weather-condition-sea.png" width="40%" height="auto" alt="Home Assistant lovelace card">
 
 ##### *Sea Forecast Layer*, example of card setup
 
@@ -417,7 +415,7 @@ The card has been tested with the sensors provided by `openuv` integrations.
 
 #### **Display the *Ultraviolet Radiation Layer*** 
 
-<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-uv.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/main/md.images/ha-card-weather-condition-uv.png" width="40%" height="auto" alt="Home Assistant lovelace card">
 
 ##### *Ultraviolet Radiation Layer*, example of card setup
 ```yaml
@@ -462,7 +460,7 @@ The card has been tested with the sensors provided by `climacell` integrations.
 
 #### **Display the *Pollen Layer*** 
 
-<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-pollen.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/main/md.images/ha-card-weather-condition-pollen.png" width="40%" height="auto" alt="Home Assistant lovelace card">
 
 ##### *Pollen Layer*, example of card setup
 
@@ -506,7 +504,7 @@ The card has been tested with the sensors provided by `climacell` integrations.
 
 #### **Display the *Air Quality Layer*** 
 
-<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-air-quality.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/main/md.images/ha-card-weather-condition-air-quality.png" width="40%" height="auto" alt="Home Assistant lovelace card">
 
 ##### *Air Quality Layer*, example of card setup
 
@@ -557,7 +555,7 @@ The card has been tested with the sensors provided by `climacell` integrations.
 
 #### **Display the *Alert Layer*** 
 
-<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/master/md.images/ha-card-weather-condition-alert.png" width="40%" height="auto" alt="Home Assistant lovelace card">
+<img src="https://github.com/PatrickSt1991/ha-card-weather-conditions-2025/raw/main/md.images/ha-card-weather-condition-alert.png" width="40%" height="auto" alt="Home Assistant lovelace card">
 
 ##### *Alert Layer*, example of card setup
 
