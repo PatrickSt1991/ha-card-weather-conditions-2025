@@ -20,7 +20,7 @@ export default defineConfig({
   },
   plugins: [
     string({
-      include: ['**/transl/*.json', '**/icons/**/*.svg'], // updated this line
+      include: ['**/translations/*.json', '**/icons/**/*.svg'], // updated this line
     }),
   ],
 });
