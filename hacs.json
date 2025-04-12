@@ -1,8 +1,6 @@
 {
   "name": "Weather Conditions 2025 Card",
   "description": "A custom weather card for Home Assistant.",
-  "file": "dist/ha-card-weather-conditions.js",
-  "category": "plugin",
-  "render_readme": true,
+  "filename": "dist/ha-card-weather-conditions.js",
   "homeassistant": "2024.3.3"
 }
