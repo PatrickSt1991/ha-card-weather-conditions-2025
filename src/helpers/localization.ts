@@ -1,6 +1,29 @@
 // src/helpers/localization.ts
 import { PATHS } from '../constants/path';
 import { ITerms } from '../types';
+import en from './transl/en.json?raw';
+import it from './transl/it.json?raw';
+import nl from './transl/nl.json?raw';
+import es from './transl/es.json?raw';
+import de from './transl/de.json?raw';
+import fr from './transl/fr.json?raw';
+import sr from './transl/sr.json?raw';
+import pt from './transl/pt.json?raw';
+import da from './transl/da.json?raw';
+import no from './transl/no.json?raw';
+
+export const TRANSLATIONS = {
+  en: JSON.parse(en),
+  it: JSON.parse(it),
+  nl: JSON.parse(nl),
+  es: JSON.parse(es),
+  de: JSON.parse(de),
+  fr: JSON.parse(fr),
+  sr: JSON.parse(sr),
+  pt: JSON.parse(pt),
+  da: JSON.parse(da),
+  no: JSON.parse(no),
+};
 
 /**
  * Map of language codes to array indices for translation files

@@ -1,5 +1,5 @@
 // src/helpers/config.ts
-import { CardConfig } from '../types';
+import { CardConfig, ITerms } from '../types';
 import { getIconConfig } from './iconConfig';
 import { getLocale, getTranslations } from './localization';
 import { FeatureFlags, detectFeatures } from './featureFlags';
@@ -12,7 +12,8 @@ export async function initializeConfig(config: CardConfig, imagePath: string): P
   config: CardConfig;
   iconConfig: ReturnType<typeof getIconConfig>;
   flags: FeatureFlags;
-  terms: Awaited<ReturnType<typeof getTranslations>>;
+  //terms: Awaited<ReturnType<typeof getTranslations>>;
+  terms: ITerms;
 }> {
   if (!config) throw new Error('Invalid configuration');
 

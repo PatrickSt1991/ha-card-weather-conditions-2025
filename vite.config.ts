@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import { viteStaticCopy } from 'vite-plugin-static-copy';
+import string from 'vite-plugin-string';
 
 export default defineConfig({
   build: {
@@ -19,17 +19,8 @@ export default defineConfig({
     },
   },
   plugins: [
-    viteStaticCopy({
-      targets: [
-        {
-          src: 'src/assets/icons',
-          dest: '.', // Copies to dist/icons
-        },
-        {
-          src: 'src/assets/transl',
-          dest: '.', // => dist/transl/
-        },
-      ],
+    string({
+      include: ['**/transl/*.json', '**/icons/**/*.svg'], // updated this line
     }),
   ],
 });

@@ -1,16 +1,27 @@
-// src/icons/buienradar.ts
+import clear from './weather/clear.svg?raw';
+import cloudy from './weather/cloudy.svg?raw';
+import fog from './weather/fog.svg?raw';
+import hail from './weather/hail.svg?raw';
+import partlycloudy from './weather/partly-cloudy.svg?raw';
+import pouring from './weather/pouring.svg?raw';
+import rain from './weather/rain.svg?raw';
+import snow from './weather/snow.svg?raw';
+import sleet from './weather/sleet.svg?raw';
+import sunny from './weather/sunny.svg?raw';
+import wind from './weather/wind.svg?raw';
+import alert from './weather/alert.svg?raw';
 
 export const buienradarIcons: Record<string, string> = {
-  clear: 'icons/icons/weather//clear.svg',
-  cloudy: 'icons/weather//cloudy.svg',
-  fog: 'icons/weather//fog.svg',
-  hail: 'icons/weather//hail.svg',
-  partlycloudy: 'icons/weather//partly-cloudy.svg',
-  pouring: 'icons/weather//pouring.svg',
-  rainy: 'icons/weather//rain.svg',
-  snowy: 'icons/weather//snow.svg',
-  snowyrainy: 'icons/weather//sleet.svg',
-  sunny: 'icons/weather//sunny.svg',
-  windy: 'icons/weather//wind.svg',
-  exceptional: 'icons/weather//alert.svg',
+  clear,
+  cloudy,
+  fog,
+  hail,
+  partlycloudy,
+  pouring,
+  rainy: rain,
+  snowy: snow,
+  snowyrainy: sleet,
+  sunny,
+  windy: wind,
+  exceptional: alert,
 };
