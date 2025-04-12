@@ -7,11 +7,14 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
-  hacs:
-    runs-on: ubuntu-latest
+  validate-hacs:
+    runs-on: "ubuntu-latest"
     steps:
-      - uses: actions/checkout@v2
-      - name: HACS Action
-        uses: hacs/action@main
+      - uses: "actions/checkout@v3"
+      - name: HACS validation
+        uses: "hacs/action@main"
+        with:
+          category: "plugin"
