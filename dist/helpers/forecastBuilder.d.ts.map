@@ -1,0 +1,1 @@
+{"version":3,"file":"forecastBuilder.d.ts","sourceRoot":"","sources":["../../src/helpers/forecastBuilder.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,aAAa,EAAE,MAAM,qBAAqB,CAAC;AACpD,OAAO,EAAE,UAAU,EAAE,YAAY,EAAY,MAAM,UAAU,CAAC;AAE9D,wBAAgB,iBAAiB,CAAC,IAAI,EAAE,aAAa,EAAE,MAAM,EAAE,UAAU,GAAG,YAAY,CA2BvF"}

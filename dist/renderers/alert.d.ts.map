@@ -1,0 +1,1 @@
+{"version":3,"file":"alert.d.ts","sourceRoot":"","sources":["../../src/renderers/alert.ts"],"names":[],"mappings":"AAEA,OAAO,EAAE,aAAa,EAAE,MAAM,qBAAqB,CAAC;AACpD,OAAO,EAAE,UAAU,EAAE,MAAM,UAAU,CAAC;AAEtC,UAAU,kBAAkB;IAC1B,IAAI,EAAE,aAAa,CAAC;IACpB,MAAM,EAAE,UAAU,CAAC;CACpB;AAED,wBAAgB,WAAW,CAAC,EAAE,IAAI,EAAE,MAAM,EAAE,EAAE,kBAAkB,wCAa/D"}
